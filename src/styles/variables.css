@@ -1,0 +1,37 @@
+/* TODO: Implement color theme picker */
+/* TODO: Add back in .theme-dark */
+:root {
+    --color-background: #121212;
+    --color-text: #DFDFDF;
+    --color-elevated: #000000;
+    --color-primary: #333333;
+    --color-primary-hover: #555555;
+    --color-accent: #FFFFFF;
+}
+
+.theme-light :root {
+    --color-background: #FFFFFF;
+    --color-text: #222222;
+    --color-elevated: #F5F5F5;
+    --color-primary: #E0E0E0;
+    --color-primary-hover: #CCCCCC;
+    --color-accent: #000000;
+}
+
+.theme-pink :root {
+    --color-background: #FFE9EF;
+    --color-text: #2B132C;
+    --color-elevated: #FFC9D7;
+    --color-primary: #FF8DA1;
+    --color-primary-hover: #E04582;
+    --color-accent: #000000;
+}
+
+.theme-blue :root {
+    --color-background: #12126A;
+    --color-text: #D4D4FF;
+    --color-elevated: #000040;
+    --color-primary: #323295;
+    --color-primary-hover: #9C9CEA;
+    --color-accent: #EE7700;
+}
