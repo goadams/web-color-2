@@ -22,12 +22,13 @@
     align-items: center;
     text-decoration: none;
     font-size: 2.4rem;
+    color: var(--color-text);
 }
 
 .nav-button {
     display: block;
     background-color: var(--color-primary);
-    color: var(--color-accent);
+    color: var(--color-text);
     padding: 0.5rem 2rem;
     border-radius: .4rem;
     text-decoration: none;
