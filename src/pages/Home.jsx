@@ -1,5 +1,7 @@
 import React from "react";
 import Layout from "../components/Layout.jsx";
+import "./Home.css"
+import {Link, NavLink} from "react-router-dom";
 
 const Home = () => {
     return (
@@ -15,6 +17,42 @@ const Home = () => {
                     Web Color Tools
                 </Link>
                 <h1>Home Page</h1>
+                <div className="intro-text">
+                    <p>Welcome to Web Color Tools, your one-stop website for color reference.</p>
+                    <p>Choose a tool below:</p>
+                </div>
+                <nav className="app-nav-home">
+                    <ul className="nav-list-home">
+                        <li>
+                            <NavLink
+                                to={"/random"}
+                                className="nav-button-home">
+                                Random Color
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
+                                to={"/palettes"}
+                                className="nav-button-home">
+                                Color Palette
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
+                                to={"/gradients"}
+                                className="nav-button-home">
+                                Gradient
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
+                                to={"/accessibility"}
+                                className="nav-button-home">
+                                Accessibility
+                            </NavLink>
+                        </li>
+                    </ul>
+                </nav>
             </Layout>
         </>
     );
