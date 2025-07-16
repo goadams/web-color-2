@@ -1,0 +1,83 @@
+
+/* Random Color Display */
+
+.random-color-display {
+    width: 100%;
+    max-width: 100rem;
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    padding: 2rem;
+    min-height: 30rem;
+}
+
+.random-color-text {
+    font-size: 4rem;
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+/* Interaction */
+
+.random-color-interact {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+    margin: 1rem;
+}
+
+.random-color-btn {
+    margin: 1rem;
+}
+
+
+/* Saved Colors */
+.random-color-saved {
+    background: var(--color-elevated);
+    padding: 1rem;
+    text-align: center;
+    justify-items: center;
+    width: 100%;
+    max-width: 137rem;
+    justify-self: center;
+}
+
+.saved-color-container {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+    font-size: 1.4rem;
+    line-height: 1;
+}
+
+.saved-color-container button {
+    margin-top: .6rem;
+}
+
+.saved-color-container p {
+    margin: 0 0 .6rem;
+}
+
+.saved-color-rgb {
+    font-size: 1.3rem;
+}
+
+.saved-display {
+    border: 1px solid var(--color-primary);
+    border-radius: .4rem;
+    padding: 1rem;
+    justify-items: center;
+    margin: .5rem;
+}
+.saved-display:hover {
+    background: var(--color-primary);
+    border: 1px solid var(--color-background);
+}
+
+.saved-color {
+    width: 10rem;
+    height: 5rem;
+}
