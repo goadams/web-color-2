@@ -4,6 +4,8 @@ import getRandomColor from "../utils/getRandomColor.js";
 import getTextBestColor from "../utils/getTextBestColor.js";
 import "./RandomColor.css"
 import hexToRgb from "../utils/hexToRbg.js";
+import SavedSection from "../components/SavedSection.jsx";
+
 
 const RandomColor = () => {
     const [color, setColor] = React.useState(getRandomColor());
@@ -54,15 +56,7 @@ const RandomColor = () => {
                     <h2>Saved Colors</h2>
                     <div className="saved-color-container">
                         {savedColors.map((c, i) => (
-                            <div className="saved-display" key={i} >
-                                <p className="saved-color-hex">{c}</p>
-                                <p className="saved-color-rgb">rgb({hexToRgb(c).r}, {hexToRgb(c).g}, {hexToRgb(c).b})</p>
-                                <div className="saved-color" style={{ background: c }}></div>
-                                <button
-                                    onClick={() => handleDelete(i)}>
-                                    Delete
-                                </button>
-                            </div>
+                            <SavedSection key={i} colors={c} handleDelete={() => handleDelete(i)} />
                         ))}
                     </div>
                 </div>
