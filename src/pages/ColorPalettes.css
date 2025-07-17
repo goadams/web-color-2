@@ -1,0 +1,145 @@
+.palettes-container {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+        "picker  show"
+        "saved   saved";
+}
+
+
+/* Palette picker */
+
+.palette-selection {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.palette-type-select {
+    width: 28rem;
+    margin-top: 1rem;
+    line-height: 1.5;
+}
+
+/* Color picker */
+
+.palette-color-picker {
+    grid-area: picker;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 40rem;
+    min-width: 30rem;
+    text-align: center;
+    align-items: center;
+    background: var(--color-elevated);
+    padding: 2rem;
+    font-size: 1.8rem;
+    line-height: 1;
+}
+
+.palette-color-picker label,
+.palette-type-select-wrapper label {
+    padding-bottom: .5rem;
+}
+
+
+.palette-base-hex-wrapper {
+    margin-top: 4rem;
+}
+
+.palette-base-hex-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.palette-input[type="color"] {
+    height: 8rem;
+    border-bottom: .5rem solid var(--color-accent);
+}
+
+.palette-input[type="color"]:focus {
+    border: none;
+}
+
+.palette-input {
+    background: none;
+    border: none;
+    outline: none;
+    width: 23.5rem;
+    color: var(--color-text);
+    text-align: center;
+    justify-items: center;
+}
+
+.palette-input:focus-visible {
+    outline: 1px solid var(--color-accent);
+}
+
+
+/* Palette display */
+
+.palette-display {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-self: center;
+    text-align: center;
+    background: var(--color-elevated);
+    margin: 0 1rem;
+    padding: 1rem;
+}
+
+.palette-display-title {
+    font-size: 2rem;
+}
+
+.palette-color-container {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+}
+
+.palette-color-wrapper {
+    margin: 1rem;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1;
+    width: 13rem;
+}
+
+.palette-color-wrapper p {
+    margin-bottom: .7rem;
+}
+
+.palette-display {
+    grid-area: show;
+    display: flex;
+}
+
+.palette-display-square {
+    width: 10rem;
+    height: 10rem;
+    justify-self: center;
+}
+
+
+
+/* Saved palettes */
+.palette-saved-container {
+    grid-area: saved;
+    text-align: center;
+    padding: 2rem 1rem;
+    margin: 4rem 1rem 2rem;
+    background: var(--color-elevated);
+}
+
+.palette-saved {
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    justify-content: center;
+    margin-top: 2rem;
+    width: 100%;
+}
