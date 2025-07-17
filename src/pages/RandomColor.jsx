@@ -33,7 +33,7 @@ const RandomColor = () => {
                     </button>
                     <button
                         className="random-color-btn"
-                        onClick={() => setSavedColors([color, ...savedColors])}>
+                        onClick={() => setSavedColors([ [color] , ...savedColors])}>
                         Save Color
                     </button>
                     <button
