@@ -9,6 +9,14 @@ const RandomColor = () => {
     const [color, setColor] = React.useState(getRandomColor());
     const [savedColors, setSavedColors] = React.useState([]);
 
+    const populateRandomColors = (num) => {
+        const newColors = [];
+        for (let i = 0; i < num; i++) {
+            newColors.push([getRandomColor()]);
+        }
+        setSavedColors([...newColors, ...savedColors]);
+    };
+
     const handleDelete = (i) => {
         setSavedColors(savedColors.filter((_, index) => index !== i));
     };
@@ -38,9 +46,7 @@ const RandomColor = () => {
                     </button>
                     <button
                         className="random-color-btn"
-                        onClick={() => setSavedColors([getRandomColor(), getRandomColor(), getRandomColor(),
-                            getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor(),
-                            getRandomColor(), getRandomColor(), ...savedColors])}>
+                        onClick={() => populateRandomColors(10)}>
                         Save 10 Random Colors
                     </button>
                 </div>
