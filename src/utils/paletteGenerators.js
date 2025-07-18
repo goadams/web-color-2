@@ -89,3 +89,18 @@ export function generateTriadicPalette(hex) {
     ];
     return triad.map(([hue, sat, light]) => hslToHex(hue, sat, light));
 }
+
+export function generateAnalogousComplementaryPalette(hex, count = 5, angle = 15) {
+    const base = hexToHSL(hex);
+    const half = Math.floor(count / 2);
+    const palette = [];
+
+    for (let i = -half; i <= half; i++) {
+        const hue = (base[0] + i * angle + 360) % 360;
+        // Analogous color
+        palette.push(hslToHex(hue, base[1], base[2]));
+        // Complement of the analogous color
+        palette.push(hslToHex((hue + 180) % 360, base[1], base[2]));
+    }
+    return palette;
+}
