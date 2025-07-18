@@ -3,6 +3,8 @@ import { Link, NavLink } from "react-router-dom";
 import "./Header.css"
 
 const Header = () => {
+    const [menuIsOpen, setMenuIsOpen] = React.useState(false);
+
     return (
         <>
             <header className="app-header">
@@ -16,7 +18,16 @@ const Header = () => {
                     Web Color Tools
                 </Link>
                 <nav className="app-nav">
-                    <ul className="nav-list">
+                    <button
+                        className={`hamburger ${menuIsOpen ? "open" : ""}`}
+                        aria-label="Toggle navigation"
+                        onClick={() => setMenuIsOpen((open) => !open)}
+                    >
+                        <span className="bar"></span>
+                        <span className="bar"></span>
+                        <span className="bar"></span>
+                    </button>
+                    <ul className={`nav-list ${menuIsOpen ? "open" : ""}`}>
                         <li>
                             <NavLink
                                 to={"/random"}
