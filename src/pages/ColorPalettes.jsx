@@ -10,7 +10,8 @@ import {
     generateSquarePalette,
     generateSplitPalette,
     generateComplementaryPalette,
-    generateMonoPalette
+    generateMonoPalette,
+    generateAnalogousComplementaryPalette
 } from "../utils/paletteGenerators.js";
 import hexToRgb from "../utils/hexToRbg.js";
 import SavedSection from "../components/SavedSection.jsx";
@@ -90,8 +91,7 @@ const ColorPalettes = () => {
                 setColorPalette(generateSquarePalette(color));
                 break;
             case "analogous-complementary":
-                // TODO: Create a generator for analogous-complementary
-                setColorPalette(generateAnalogousPalette(color));
+                setColorPalette(generateAnalogousComplementaryPalette(color));
                 break;
         }
     }, [color, palette]);
