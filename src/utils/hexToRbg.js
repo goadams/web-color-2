@@ -1,9 +1,10 @@
 export default function hexToRgb(hex) {
-    // Remove hash if present
     hex = hex.replace(/^#/, '');
-    // Expand shorthand form (e.g. "03F") to full form ("0033FF")
     if (hex.length === 3) {
         hex = hex.split('').map(x => x + x).join('');
+    }
+    if (hex.length !== 6) {
+        throw new Error('Invalid hex color.');
     }
     const num = parseInt(hex, 16);
     return {

@@ -12,8 +12,11 @@ export default function hexToHSL(hex) {
     } else {
         throw new Error("Invalid HEX color.");
     }
-    r /= 255; g /= 255; b /= 255;
-    const max = Math.max(r, g, b), min = Math.min(r, g, b);
+    r /= 255;
+    g /= 255;
+    b /= 255;
+    const max = Math.max(r, g, b);
+    const min = Math.min(r, g, b);
     let h, s, l = (max + min) / 2;
     if (max === min) {
         h = s = 0;
@@ -27,5 +30,9 @@ export default function hexToHSL(hex) {
         }
         h /= 6;
     }
-    return [Math.round(h * 360), +(s * 100).toFixed(1), +(l * 100).toFixed(1)];
+    return [
+        Math.round(h * 360),
+        Number((s * 100).toFixed(1)),
+        Number((l * 100).toFixed(1))
+    ];
 }

@@ -24,14 +24,19 @@ export function generateAnalogousPalette(hex, count = 5, angle = 15) {
 }
 
 export function generateComplementaryPalette(hex) {
-    const base = hexToHSL(hex);
-    const complementHue = (base[0] + 180) % 360;
+    const base = hexToHSL(hex);  // [h, s, l], all in 0-360, 0-100, 0-100 respectively
+    const [h, s, l] = base;
+    const complementHue = (h + 180) % 360;
+    const lighter = Math.min(l + 20, 100);
+    const darker = Math.max(l - 20, 0);
+
     return [
-        hslToHex(base[0], base[1], base[2]),                        // Base
-        hslToHex(complementHue, base[1], base[2]),                 // Complement
-        hslToHex(base[0], base[1], Math.min(base[2] + 20, 100)),    // Lighter base
-        hslToHex(complementHue, base[1], Math.min(base[2] + 20, 100)), // Lighter complement
-        hslToHex(base[0], base[1], Math.max(base[2] - 20, 0)),      // Darker base
+        hslToHex(h, s, l),                 // Base
+        hslToHex(complementHue, s, l),     // Complement
+        hslToHex(h, s, lighter),           // Lighter base
+        hslToHex(complementHue, s, lighter), // Lighter complement
+        hslToHex(h, s, darker),            // Darker base
+        hslToHex(complementHue, s, darker)   // Darker complement
     ];
 }
 
@@ -47,42 +52,40 @@ export function generateMonoPalette(hex, count = 5) {
     return palette;
 }
 
-export function generateSplitPalette(hex, angle = 30) {
-    const base = hexToHSL(hex);
-    const compHue = (base[0] + 180) % 360;
-    const split1 = (compHue - angle + 360) % 360;
-    const split2 = (compHue + angle) % 360;
+export function generateSplitPalette(hex) {
+    const base = hexToHSL(hex); // base[0] is the hue
+    const split1 = (base[0] + 150) % 360;
+    const split2 = (base[0] + 210) % 360;
     return [
-        hslToHex(base[0], base[1], base[2]),      // Base color
-        hslToHex(split1, base[1], base[2]),      // Split complement 1
-        hslToHex(split2, base[1], base[2]),      // Split complement 2
+        hslToHex(base[0], base[1], base[2]),  // Base color
+        hslToHex(split1, base[1], base[2]),   // Split complement 1
+        hslToHex(split2, base[1], base[2]),   // Split complement 2
     ];
 }
 
 export function generateSquarePalette(hex) {
-    const base = hexToHSL(hex);
+    const [h, s, l] = hexToHSL(hex); // Confirm output is [h, s, l]
     const palette = [];
     for (let i = 0; i < 4; i++) {
-        let hue = (base[0] + i * 90) % 360;
-        palette.push(hslToHex(hue, base[1], base[2]));
+        const hue = (h + i * 90) % 360;
+        palette.push(hslToHex(hue, s, l));
     }
     return palette;
 }
 
 export function generateTetradicPalette(hex) {
-    const base = hexToHSL(hex);
-    // Rectangle: 0°, +60°, +180°, +240°
+    const base = hexToHSL(hex); // Returns [H, S, L]
+    // Rectangle: 0°, +90°, +180°, +270°
     const angles = [0, 60, 180, 240];
     return angles.map(a => hslToHex((base[0] + a) % 360, base[1], base[2]));
 }
 
 export function generateTriadicPalette(hex) {
-    const base = hexToHSL(hex);
-    const hue1 = (base[0] + 120) % 360;
-    const hue2 = (base[0] + 240) % 360;
-    return [
-        hslToHex(base[0], base[1], base[2]),    // Base color
-        hslToHex(hue1, base[1], base[2]),      // Triad partner 1
-        hslToHex(hue2, base[1], base[2]),      // Triad partner 2
+    const [h, s, l] = hexToHSL(hex);
+    const triad = [
+        [h, s, l],
+        [(h + 120) % 360, s, l],
+        [(h + 240) % 360, s, l],
     ];
+    return triad.map(([hue, sat, light]) => hslToHex(hue, sat, light));
 }
