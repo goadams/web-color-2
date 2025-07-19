@@ -6,6 +6,15 @@
         "saved   saved";
 }
 
+@media (max-width: 1400px) {
+    .palettes-container {
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+        align-items: center;
+    }
+}
+
 
 /* Palette picker */
 
