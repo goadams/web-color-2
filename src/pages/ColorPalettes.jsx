@@ -1,7 +1,6 @@
 import React from "react";
 import Layout from "../components/Layout.jsx";
 import "./ColorPalettes.css";
-import Select, { components as Components } from 'react-select';
 import getCssVar from "../utils/getCssVar.js";
 import {
     generateTriadicPalette,
@@ -98,11 +97,6 @@ const ColorPalettes = () => {
                 break;
         }
     }, [color, palette]);
-
-    const MaxLengthInput = (props) => {
-        const { maxLength } = props.selectProps;
-        return <Components.Input {...props} maxLength={maxLength} />;
-    };
 
     const handleChangeHex = (e) => {
         const filtered = e.target.value.replace(/[^0-9a-fA-F]/g, '');
