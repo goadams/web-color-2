@@ -31,13 +31,12 @@
 }
 
 /* Color picker */
-.palette-base-hex-wrapper {
-    margin: 4rem 0 2rem 0;
-}
 
+/*TODO: REMOVE*/
 .palette-base-hex-wrapper {
     display: flex;
     flex-direction: column;
+    margin: 4rem 0 2rem 0;
 }
 
 .palette-input[type="color"] {

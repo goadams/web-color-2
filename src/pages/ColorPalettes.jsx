@@ -17,6 +17,7 @@ import hexToRgb from "../utils/hexToRbg.js";
 import SavedSection from "../components/SavedSection.jsx";
 import ElevatedSection from "../components/ElevatedSection.jsx";
 import OptionSelect from "../components/OptionSelect.jsx";
+import ColorChoice from "../components/ColorChoice.jsx";
 
 
 const ColorPalettes = () => {
@@ -108,6 +109,10 @@ const ColorPalettes = () => {
         setColor(`#${filtered.toUpperCase()}`);
     };
 
+    const handleChangeColorInput = (e) => {
+        setColor(e.target.value.toUpperCase());
+    };
+
     const handleChangePalette = (selected) => {
         setPalette(selected);
     };
@@ -144,27 +149,12 @@ const ColorPalettes = () => {
                             options={typeOptions}
                             onChange={handleChangePalette}
                         >
-                            <div className="palette-base-hex-wrapper">
-                                <label htmlFor="palette-color-hex">Base Color Hex:</label>
-                                <input
-                                    type="text"
-                                    id="palette-color-hex"
-                                    name="palette-color-hex"
-                                    value={`#${color.substring(1)}`}
-                                    maxLength={7}
-                                    className="palette-input"
-                                    onChange={handleChangeHex}
-                                />
-                            </div>
-                            <label htmlFor="palette-color-input">Base Color Picker:</label>
-                            <input
-                                type="color"
-                                id="palette-color-input"
-                                name="palette-color-input"
-                                className="palette-input"
-                                value={color}
-                                onChange={(e) => setColor(e.target.value.toUpperCase())}
-                            />
+                            <ColorChoice
+                                name="Base Color"
+                                color={color}
+                                handleChangeHex={handleChangeHex}
+                                handleChangeColorInput={handleChangeColorInput}
+                            ></ColorChoice>
                         </OptionSelect>
                     </ElevatedSection>
 
