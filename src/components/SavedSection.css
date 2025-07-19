@@ -26,10 +26,12 @@
     align-items: center;
     justify-content: center;
     width: 100%;
+    font-size: 1.4rem;
 }
 
 .saved-display {
     margin: .5rem;
+    justify-items: center;
 }
 
 .saved-color-wrapper button {
