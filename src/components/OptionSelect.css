@@ -1,0 +1,21 @@
+.os-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 30rem;
+    text-align: center;
+    align-items: center;
+    background: var(--color-elevated);
+    padding: 2rem;
+    font-size: 1.8rem;
+    line-height: 1;
+}
+
+.os-container label {
+    padding-bottom: .8rem;
+}
+
+.os-select {
+    width: 28rem;
+    margin-top: 1rem;
+    line-height: 1.5;
+}
