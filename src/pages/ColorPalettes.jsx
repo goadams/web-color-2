@@ -152,17 +152,18 @@ const ColorPalettes = () => {
                                 />
                             </div>
                             <div className="palette-base-hex-wrapper">
-                                <label htmlFor="palette-color-input">Base Color:</label>
+                                <label htmlFor="palette-color-hex">Base Color Hex:</label>
                                 <input
                                     type="text"
-                                    id="palette-color-input"
-                                    name="palette-color-input"
+                                    id="palette-color-hex"
+                                    name="palette-color-hex"
                                     value={`#${color.substring(1)}`}
                                     maxLength={7}
                                     className="palette-input"
                                     onChange={handleChangeHex}
                                 />
                             </div>
+                            <label htmlFor="palette-color-input">Base Color Picker:</label>
                             <input
                                 type="color"
                                 id="palette-color-input"
