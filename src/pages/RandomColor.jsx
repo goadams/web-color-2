@@ -5,6 +5,7 @@ import getTextBestColor from "../utils/getTextBestColor.js";
 import "./RandomColor.css"
 import hexToRgb from "../utils/hexToRbg.js";
 import SavedSection from "../components/SavedSection.jsx";
+import ElevatedSection from "../components/ElevatedSection.jsx";
 
 
 const RandomColor = () => {
@@ -27,39 +28,42 @@ const RandomColor = () => {
         <>
             <Layout>
                 <h1>Random Color</h1>
-                <div className="random-color-display" style={{ background: color }}>
-                    <p className="random-color-text" style={{ color: getTextBestColor(color) }}>
-                        {color}
-                    </p>
-                    <p className="random-color-text" style={{ color: getTextBestColor(color) }}>
-                        rgb({hexToRgb(color).r}, {hexToRgb(color).g}, {hexToRgb(color).b})
-                    </p>
-                </div>
-                <div className="random-color-interact">
-                    <button
-                        className="random-color-btn"
-                        onClick={() => setColor(getRandomColor())}>
-                        New Color
-                    </button>
-                    <button
-                        className="random-color-btn"
-                        onClick={() => setSavedColors([ [color] , ...savedColors])}>
-                        Save Color
-                    </button>
-                    <button
-                        className="random-color-btn"
-                        onClick={() => populateRandomColors(10)}>
-                        Save 10 Random Colors
-                    </button>
-                </div>
-                <div className="random-color-saved">
+                <ElevatedSection width={"auto"}>
+                    <div className="random-color-display" style={{ background: color }}>
+                        <p className="random-color-text" style={{ color: getTextBestColor(color) }}>
+                            {color}
+                        </p>
+                        <p className="random-color-text" style={{ color: getTextBestColor(color) }}>
+                            rgb({hexToRgb(color).r}, {hexToRgb(color).g}, {hexToRgb(color).b})
+                        </p>
+                    </div>
+                    <div className="random-color-interact">
+                        <button
+                            className="random-color-btn"
+                            onClick={() => setColor(getRandomColor())}>
+                            New Color
+                        </button>
+                        <button
+                            className="random-color-btn"
+                            onClick={() => setSavedColors([ [color] , ...savedColors])}>
+                            Save Color
+                        </button>
+                        <button
+                            className="random-color-btn"
+                            onClick={() => populateRandomColors(10)}>
+                            Save 10 Random Colors
+                        </button>
+                    </div>
+                </ElevatedSection>
+
+                <ElevatedSection maxWidth={"137rem"}>
                     <h2>Saved Colors</h2>
                     <div className="saved-color-container">
                         {savedColors.map((c, i) => (
                             <SavedSection key={i} colors={c} handleDelete={() => handleDelete(i)} />
                         ))}
                     </div>
-                </div>
+                </ElevatedSection>
             </Layout>
         </>
     );

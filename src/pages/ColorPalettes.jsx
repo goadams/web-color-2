@@ -15,6 +15,7 @@ import {
 } from "../utils/paletteGenerators.js";
 import hexToRgb from "../utils/hexToRbg.js";
 import SavedSection from "../components/SavedSection.jsx";
+import ElevatedSection from "../components/ElevatedSection.jsx";
 
 
 const ColorPalettes = () => {
@@ -130,45 +131,53 @@ const ColorPalettes = () => {
             <Layout>
                 <h1>Color Palettes</h1>
                 <div className="palettes-container">
-
-                    <div className="palette-color-picker">
-                        <div className="palette-type-select-wrapper">
-                            <label htmlFor="palette-type-select">Palette Type Select:</label>
-                            <Select
-                                className='palette-type-select'
-                                components={{ Input: MaxLengthInput }}
-                                maxLength={25}
-                                inputId="palette-type-select"
-                                name="palette-type-select"
-                                value={palette}
-                                styles={customStyles}
-                                options={typeOptions}
-                                onChange={handleChangePalette}
-                            />
-                        </div>
-                        <div className="palette-base-hex-wrapper">
-                            <label htmlFor="palette-color-input">Base Color:</label>
+                    <ElevatedSection
+                        gridArea="picker"
+                        maxWidth={"40rem"}
+                        minWidth={"30rem"}
+                    >
+                        <div className="palette-color-picker">
+                            <div className="palette-type-select-wrapper">
+                                <label htmlFor="palette-type-select">Palette Type Select:</label>
+                                <Select
+                                    className='palette-type-select'
+                                    components={{ Input: MaxLengthInput }}
+                                    maxLength={25}
+                                    inputId="palette-type-select"
+                                    name="palette-type-select"
+                                    value={palette}
+                                    styles={customStyles}
+                                    options={typeOptions}
+                                    onChange={handleChangePalette}
+                                />
+                            </div>
+                            <div className="palette-base-hex-wrapper">
+                                <label htmlFor="palette-color-input">Base Color:</label>
+                                <input
+                                    type="text"
+                                    id="palette-color-input"
+                                    name="palette-color-input"
+                                    value={`#${color.substring(1)}`}
+                                    maxLength={7}
+                                    className="palette-input"
+                                    onChange={handleChangeHex}
+                                />
+                            </div>
                             <input
-                                type="text"
+                                type="color"
                                 id="palette-color-input"
                                 name="palette-color-input"
-                                value={`#${color.substring(1)}`}
-                                maxLength={7}
                                 className="palette-input"
-                                onChange={handleChangeHex}
+                                value={color}
+                                onChange={(e) => setColor(e.target.value.toUpperCase())}
                             />
                         </div>
-                        <input
-                            type="color"
-                            id="palette-color-input"
-                            name="palette-color-input"
-                            className="palette-input"
-                            value={color}
-                            onChange={(e) => setColor(e.target.value.toUpperCase())}
-                        />
-                    </div>
+                    </ElevatedSection>
 
-                    <div className="palette-display">
+                    <ElevatedSection
+                        gridArea='show'
+                        width="auto"
+                    >
                         <p className="palette-display-title">{color} {palette.label} Palette</p>
                         <div className="palette-color-container">
                             {colorPalette.map((c, i) => (
@@ -184,21 +193,22 @@ const ColorPalettes = () => {
                             ))}
                         </div>
                         <button className="save-palette" onClick={handleSave}>Save Palette</button>
-                    </div>
-
-                    <div className="palette-saved-container">
+                    </ElevatedSection>
+                    <ElevatedSection
+                        gridArea={'saved'}
+                    >
                         <h2>Saved Palettes</h2>
                         <div className="palette-saved">
-                        {savedPalettes.map((pal, i) => (
-                            <SavedSection
-                                key={i}
-                                colors={pal.colors}
-                                handleDelete={() => handleDelete(i)}
-                                title={`${pal.baseColor} ${pal.type} Palette`}
-                            />
-                        ))}
+                            {savedPalettes.map((pal, i) => (
+                                <SavedSection
+                                    key={i}
+                                    colors={pal.colors}
+                                    handleDelete={() => handleDelete(i)}
+                                    title={`${pal.baseColor} ${pal.type} Palette`}
+                                />
+                            ))}
                         </div>
-                    </div>
+                    </ElevatedSection>
                 </div>
             </Layout>
         </>

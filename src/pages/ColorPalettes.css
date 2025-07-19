@@ -24,11 +24,8 @@
 /* Color picker */
 
 .palette-color-picker {
-    grid-area: picker;
     display: flex;
     flex-direction: column;
-    width: 100%;
-    max-width: 40rem;
     min-width: 30rem;
     text-align: center;
     align-items: center;
@@ -78,8 +75,8 @@
 
 
 /* Palette display */
-
 .palette-display {
+    grid-area: show;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -113,11 +110,6 @@
     margin-bottom: .7rem;
 }
 
-.palette-display {
-    grid-area: show;
-    display: flex;
-}
-
 .palette-display-square {
     width: 10rem;
     height: 10rem;
@@ -127,14 +119,6 @@
 
 
 /* Saved palettes */
-.palette-saved-container {
-    grid-area: saved;
-    text-align: center;
-    padding: 2rem 1rem;
-    margin: 4rem 1rem 2rem;
-    background: var(--color-elevated);
-}
-
 .palette-saved {
     display: flex;
     flex-direction: row;
