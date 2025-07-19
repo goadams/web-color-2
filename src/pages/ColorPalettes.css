@@ -22,24 +22,6 @@
 }
 
 /* Color picker */
-
-.palette-color-picker {
-    display: flex;
-    flex-direction: column;
-    min-width: 30rem;
-    text-align: center;
-    align-items: center;
-    background: var(--color-elevated);
-    padding: 2rem;
-    font-size: 1.8rem;
-    line-height: 1;
-}
-
-.palette-color-picker label,
-.palette-type-select-wrapper label {
-    padding-bottom: .5rem;
-}
-
 .palette-base-hex-wrapper {
     margin: 4rem 0 2rem 0;
 }

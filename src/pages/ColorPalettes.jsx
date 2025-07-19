@@ -16,6 +16,7 @@ import {
 import hexToRgb from "../utils/hexToRbg.js";
 import SavedSection from "../components/SavedSection.jsx";
 import ElevatedSection from "../components/ElevatedSection.jsx";
+import OptionSelect from "../components/OptionSelect.jsx";
 
 
 const ColorPalettes = () => {
@@ -136,21 +137,13 @@ const ColorPalettes = () => {
                         maxWidth={"40rem"}
                         minWidth={"30rem"}
                     >
-                        <div className="palette-color-picker">
-                            <div className="palette-type-select-wrapper">
-                                <label htmlFor="palette-type-select">Palette Type Select:</label>
-                                <Select
-                                    className='palette-type-select'
-                                    components={{ Input: MaxLengthInput }}
-                                    maxLength={25}
-                                    inputId="palette-type-select"
-                                    name="palette-type-select"
-                                    value={palette}
-                                    styles={customStyles}
-                                    options={typeOptions}
-                                    onChange={handleChangePalette}
-                                />
-                            </div>
+                        <OptionSelect
+                            name="Palette Type"
+                            value={palette}
+                            styles={customStyles}
+                            options={typeOptions}
+                            onChange={handleChangePalette}
+                        >
                             <div className="palette-base-hex-wrapper">
                                 <label htmlFor="palette-color-hex">Base Color Hex:</label>
                                 <input
@@ -172,7 +165,7 @@ const ColorPalettes = () => {
                                 value={color}
                                 onChange={(e) => setColor(e.target.value.toUpperCase())}
                             />
-                        </div>
+                        </OptionSelect>
                     </ElevatedSection>
 
                     <ElevatedSection
