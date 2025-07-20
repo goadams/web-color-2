@@ -1,7 +1,6 @@
 import React from "react";
 import Layout from "../components/Layout.jsx";
 import "./ColorPalettes.css";
-import getCssVar from "../utils/getCssVar.js";
 import {
     generateTriadicPalette,
     generateAnalogousPalette,
@@ -17,6 +16,7 @@ import SavedSection from "../components/SavedSection.jsx";
 import ElevatedSection from "../components/ElevatedSection.jsx";
 import OptionSelect from "../components/OptionSelect.jsx";
 import ColorChoice from "../components/ColorChoice.jsx";
+import { selectCustomStyles } from "../utils/selectCustomStyles.js";
 
 
 const ColorPalettes = () => {
@@ -35,39 +35,6 @@ const ColorPalettes = () => {
         { value: "square", label: "Square" },
         { value: "analogous-complementary", label: "Analogous Complementary" }
     ];
-
-    const customStyles = {
-        control: (base) => ({
-            ...base,
-            backgroundColor: getCssVar("--color-elevated"),
-            borderColor: getCssVar("--color-primary"),
-            color: getCssVar("--color-text"),
-            outlineColor: getCssVar("--color-accent"),
-            boxShadow: 'none',
-            "&:hover": {
-                borderColor: getCssVar("--color-primary"),
-            },
-        }),
-        input: (base) => ({
-            ...base,
-            color: getCssVar("--color-text"),
-            borderColor: getCssVar("--color-primary"),
-        }),
-        singleValue: (base) => ({
-            ...base,
-            color: getCssVar("--color-text"),
-        }),
-        option: (base, state) => ({
-            ...base,
-            backgroundColor: state.isSelected ? getCssVar("--color-elevated")
-                : state.isFocused ? getCssVar("--color-primary-hover") : getCssVar("--color-primary"),
-            color: getCssVar("--color-text"),
-        }),
-        menuList: (base) => ({
-            ...base,
-            backgroundColor: getCssVar("--color-elevated"),
-        }),
-    };
 
     React.useEffect(() => {
         switch (palette.value) {
@@ -139,7 +106,7 @@ const ColorPalettes = () => {
                         <OptionSelect
                             name="Palette Type"
                             value={palette}
-                            styles={customStyles}
+                            styles={selectCustomStyles}
                             options={typeOptions}
                             onChange={handleChangePalette}
                         >
@@ -147,8 +114,8 @@ const ColorPalettes = () => {
                                 name="Base Color"
                                 color={color}
                                 handleChangeHex={handleChangeHex}
-                                handleChangeColorInput={handleChangeColorInput}
-                            ></ColorChoice>
+                                handleChangeColorInput={handleChangeColorInput}>
+                            </ColorChoice>
                         </OptionSelect>
                     </ElevatedSection>
 
