@@ -5,7 +5,7 @@ const Footer = () => {
     return (
         <>
             <footer className="app-footer">
-                <p>Web Color Tools, created by <a href="https://www.linkedin.com/in/agregadams/">aGregAdams</a></p>
+                <p>Web Color Tools, created by <a href="https://www.linkedin.com/in/goadams/">Greg Adams</a></p>
             </footer>
         </>
     );
