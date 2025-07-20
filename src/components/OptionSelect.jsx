@@ -7,11 +7,11 @@ const MaxLengthInput = (props) => {
     return <Components.Input {...props} maxLength={maxLength} />;
 };
 
-const OptionSelect = ({ children, name, value, styles, options, onChange, maxLength = 25 }) => {
+const OptionSelect = ({ children, name, value, styles, options, onChange, maxLength = 25, flexDirection }) => {
     const modName = name.replace(/\s+/g, '-').toLowerCase();
 
     return (
-        <div className="os-container">
+        <div className="os-container" style={{ display: 'flex', flexDirection: flexDirection }}>
             <div className="os-select-wrapper">
                 <label htmlFor={`${modName}-select`}>{name} Select:</label>
                 <Select
