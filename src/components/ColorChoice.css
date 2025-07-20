@@ -1,8 +1,9 @@
-.color-choice [class$="hex-wrapper"] {
+.color-choice [class$="-wrapper"] {
     display: flex;
     flex-direction: column;
     margin: 4rem 0 2rem 0;
     align-items: center;
+    justify-content: center;
 }
 
 .color-choice [class$="-input"][type="color"] {
