@@ -4,5 +4,19 @@
     margin: 4rem 1rem 2rem;
     background: var(--color-elevated);
     justify-self: center;
+    align-self: center;
     align-content: center;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    font-size: 1.8rem;
+    line-height: 1;
+}
+
+.elevated-container label {
+    padding-bottom: 0.8rem;
+}
+
+.elevated-container button {
+    line-height: 1.5;
 }
