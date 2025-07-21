@@ -1,5 +1,7 @@
 # Web Color Tools
 A website with color tools commonly used in web development.
+
+- Note: Not all features are implemented yet
 ## Random Color
 - Get a random color
 - Save colors for later
