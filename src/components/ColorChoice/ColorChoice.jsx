@@ -1,6 +1,6 @@
 import React from "react";
 import "./ColorChoice.css"
-import NumberInput from "./NumberInput.jsx";
+import NumberInput from "../NumberInput/NumberInput.jsx";
 
 const ColorChoice = ({ name, color, handleChangeHex, handleChangeColorInput, position, handleChangePosition }) => {
     const modName = name.replace(/\s+/g, '-').toLowerCase();

@@ -1,11 +1,11 @@
 import React from "react";
-import Layout from "../components/Layout.jsx";
+import Layout from "../components/Layout/Layout.jsx";
 import getRandomColor from "../utils/getRandomColor.js";
 import getTextBestColor from "../utils/getTextBestColor.js";
 import "./RandomColor.css"
 import hexToRgb from "../utils/hexToRbg.js";
-import SavedSection from "../components/SavedSection.jsx";
-import ElevatedSection from "../components/ElevatedSection.jsx";
+import SavedSection from "../components/SavedSection/SavedSection.jsx";
+import ElevatedSection from "../components/ElevatedSection/ElevatedSection.jsx";
 
 
 const RandomColor = () => {

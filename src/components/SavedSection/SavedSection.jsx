@@ -1,4 +1,4 @@
-import hexToRgb from "../utils/hexToRbg.js";
+import hexToRgb from "../../utils/hexToRbg.js";
 import React from "react";
 import "./SavedSection.css";
 

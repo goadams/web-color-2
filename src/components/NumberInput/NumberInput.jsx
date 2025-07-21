@@ -1,6 +1,6 @@
 import NumericInput from 'react-numeric-input';
 import React from "react";
-import getCssVar from "../utils/getCssVar.js";
+import getCssVar from "../../utils/getCssVar.js";
 
 const NumberInput = ({ min, max, step, value, onChange, id, name }) => {
 

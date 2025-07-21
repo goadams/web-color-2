@@ -1,11 +1,11 @@
 import React from "react";
-import Layout from "../components/Layout.jsx";
-import ElevatedSection from "../components/ElevatedSection.jsx";
-import OptionSelect from "../components/OptionSelect.jsx";
-import ColorChoice from "../components/ColorChoice.jsx";
+import Layout from "../components/Layout/Layout.jsx";
+import ElevatedSection from "../components/ElevatedSection/ElevatedSection.jsx";
+import OptionSelect from "../components/OptionSelect/OptionSelect.jsx";
+import ColorChoice from "../components/ColorChoice/ColorChoice.jsx";
 import { selectCustomStyles } from "../utils/selectCustomStyles.js";
 import "./Gradients.css";
-import NumberInput from "../components/NumberInput.jsx";
+import NumberInput from "../components/NumberInput/NumberInput.jsx";
 
 const Gradients = () => {
     const [colors, setColors] = React.useState(["#A2B7C3", "#BADDAD"]);

@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from "../components/Layout.jsx";
+import Layout from "../components/Layout/Layout.jsx";
 import "./Home.css"
 import {Link, NavLink} from "react-router-dom";
 

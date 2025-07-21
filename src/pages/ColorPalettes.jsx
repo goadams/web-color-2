@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from "../components/Layout.jsx";
+import Layout from "../components/Layout/Layout.jsx";
 import "./ColorPalettes.css";
 import {
     generateTriadicPalette,
@@ -12,10 +12,10 @@ import {
     generateAnalogousComplementaryPalette
 } from "../utils/paletteGenerators.js";
 import hexToRgb from "../utils/hexToRbg.js";
-import SavedSection from "../components/SavedSection.jsx";
-import ElevatedSection from "../components/ElevatedSection.jsx";
-import OptionSelect from "../components/OptionSelect.jsx";
-import ColorChoice from "../components/ColorChoice.jsx";
+import SavedSection from "../components/SavedSection/SavedSection.jsx";
+import ElevatedSection from "../components/ElevatedSection/ElevatedSection.jsx";
+import OptionSelect from "../components/OptionSelect/OptionSelect.jsx";
+import ColorChoice from "../components/ColorChoice/ColorChoice.jsx";
 import { selectCustomStyles } from "../utils/selectCustomStyles.js";
 
 
