@@ -123,6 +123,10 @@ const Gradients = () => {
                             </ColorChoice>
                         </div>
                     </ElevatedSection>
+                    <ElevatedSection>
+                        <h2>CSS Code:</h2>
+                        <p className="gradient-code">{gradientCode}</p>
+                    </ElevatedSection>
                 </div>
             </Layout>
         </>

@@ -12,3 +12,8 @@
     display: flex;
     flex-direction: column;
 }
+
+.gradient-code {
+    font-family: monospace;
+    line-height: 2;
+}
