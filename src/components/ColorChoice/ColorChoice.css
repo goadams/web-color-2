@@ -17,7 +17,7 @@
 
 .color-choice [class$="-input"] {
     background: none;
-    border: none;
+    border: 1px solid var(--color-accent);
     outline: none;
     width: 23.5rem;
     color: var(--color-text);
