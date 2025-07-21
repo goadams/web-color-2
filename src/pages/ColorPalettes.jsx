@@ -21,6 +21,7 @@ import { selectCustomStyles } from "../utils/selectCustomStyles.js";
 
 const ColorPalettes = () => {
     const [color, setColor] = React.useState("#A2B7C3");
+    const [colorInput, setColorInput] = React.useState("#A2B7C3");
     const [palette, setPalette] = React.useState({ value: "monochromatic", label: "Monochromatic" });
     const [colorPalette, setColorPalette] = React.useState(generateMonoPalette(color));
     const [savedPalettes, setSavedPalettes] = React.useState([]);
@@ -67,7 +68,11 @@ const ColorPalettes = () => {
 
     const handleChangeHex = (e) => {
         const filtered = e.target.value.replace(/[^0-9a-fA-F]/g, '');
-        setColor(`#${filtered.toUpperCase()}`);
+        const hex = `#${filtered.toUpperCase()}`
+        setColorInput(hex);
+        if (hex.length === 7) {
+            setColor(hex);
+        }
     };
 
     const handleChangeColorInput = (e) => {
@@ -112,7 +117,7 @@ const ColorPalettes = () => {
                         >
                             <ColorChoice
                                 name="Base Color"
-                                color={color}
+                                color={colorInput}
                                 handleChangeHex={handleChangeHex}
                                 handleChangeColorInput={handleChangeColorInput}>
                             </ColorChoice>

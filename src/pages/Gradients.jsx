@@ -9,6 +9,7 @@ import NumberInput from "../components/NumberInput/NumberInput.jsx";
 
 const Gradients = () => {
     const [colors, setColors] = React.useState(["#A2B7C3", "#BADDAD"]);
+    const [colorInputs, setColorInputs] = React.useState(["#A2B7C3", "#BADDAD"]);
     const [positions, setPositions] = React.useState([0, 100]);
     const [angle, setAngle] = React.useState(90);
     const [gradient, setGradient] = React.useState({ value: "linear", label: "Linear"});
@@ -35,9 +36,14 @@ const Gradients = () => {
     const handleChangeHex = (index, e) => {
         const filtered = e.target.value.replace(/[^0-9a-fA-F]/g, '');
         const hex = `#${filtered.toUpperCase()}`;
-        setColors(
-            colors.map((c, i) => i === index ? hex : c)
+        setColorInputs(
+            colorInputs.map((c, i) => i === index ? hex : c)
         );
+        if (hex.length === 7) {
+            setColors(
+                colors.map((c, i) => i === index ? hex : c)
+            );
+        }
     };
 
     const handleChangeColorInput = (index, e) => {
@@ -90,7 +96,7 @@ const Gradients = () => {
                         <div className="gradient-colors-wrapper">
                             <ColorChoice
                                 name="Color 1"
-                                color={colors[0]}
+                                color={colorInputs[0]}
                                 handleChangeHex={(e) => handleChangeHex(0, e)}
                                 handleChangeColorInput={(e) => handleChangeColorInput(0, e)}
                                 position={positions[0]}
@@ -102,7 +108,7 @@ const Gradients = () => {
                             </ColorChoice>
                             <ColorChoice
                                 name="Color 2"
-                                color={colors[1]}
+                                color={colorInputs[1]}
                                 handleChangeHex={(e) => handleChangeHex(1, e)}
                                 handleChangeColorInput={(e) => handleChangeColorInput(1, e)}
                                 position={positions[1]}
