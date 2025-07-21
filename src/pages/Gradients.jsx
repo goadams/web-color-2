@@ -51,6 +51,9 @@ const Gradients = () => {
         setColors(
             colors.map((c, i) => i === index ? newColor : c)
         );
+        setColorInputs(
+            colorInputs.map((c, i) => i === index ? newColor : c)
+        );
     };
 
     const handleChangeGradient = (selected) => {

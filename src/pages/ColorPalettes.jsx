@@ -76,7 +76,9 @@ const ColorPalettes = () => {
     };
 
     const handleChangeColorInput = (e) => {
-        setColor(e.target.value.toUpperCase());
+        const hex = e.target.value.toUpperCase();
+        setColor(hex);
+        setColorInput(hex);
     };
 
     const handleChangePalette = (selected) => {
