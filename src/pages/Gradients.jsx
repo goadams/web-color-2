@@ -80,7 +80,8 @@ const Gradients = () => {
                             options={typeOptions}
                             onChange={handleChangeGradient}
                         >
-                            <div className="gradient-angle-wrapper">
+                            {gradient.value !== "radial" && (
+                                <div className="gradient-angle-wrapper">
                                 <label htmlFor="gradient-angle-input">Angle</label>
                                 <NumberInput
                                     id="gradient-angle-input"
@@ -91,7 +92,7 @@ const Gradients = () => {
                                     onChange={val => setAngle(val ?? 0)}
                                 >
                                 </NumberInput>
-                            </div>
+                            </div>)}
                         </OptionSelect>
                     </ElevatedSection>
                     <ElevatedSection>

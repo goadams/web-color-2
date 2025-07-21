@@ -11,6 +11,7 @@
 .gradient-angle-wrapper {
     display: flex;
     flex-direction: column;
+    margin-top: 2rem;
 }
 
 .gradient-code {
