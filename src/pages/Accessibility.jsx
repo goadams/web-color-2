@@ -31,10 +31,10 @@ const Accessibility = () => {
     const [sampleText, setSampleText] = React.useState("This is sample text...");
     const [grades, setGrades] = React.useState(['PASS', 'PASS', 'PASS', 'PASS']);
     const [colors, setColors] = useLocalStorage("accessTool-colors",['#000000', '#FFFFFF']);
-    const [colorInputs, setColorInputs] = useLocalStorage("accessTool-colorInputs",['#000000', '#FFFFFF']);
+    const [colorInputs, setColorInputs] = React.useState(colors);
     const [level, setLevel] = useLocalStorage("accessTool-level",{ value: 'w21aaa', label: 'WCAG 2.1 AAA' });
     const [tool] = React.useState({ value: "contrast", label: "Contrast Checker" });
-    const [ratio, setRatio] = useLocalStorage("accessTool-ratio",getContrastRatio(colors[0], colors[1]).toFixed(2));
+    const [ratio, setRatio] = React.useState(getContrastRatio(colors[0], colors[1]).toFixed(2));
 
     const levelOptions = [
         { value: 'w21aa', label: 'WCAG 2.1 AA' },
