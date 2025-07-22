@@ -1,7 +1,8 @@
 # Web Color Tools
 A website with color tools commonly used in web development.
 
-- Note: Not all features are implemented yet
+Note: At this time, colors and palettes are not saved if you leave the page.
+
 ## Random Color
 - Get a random color
 - Save colors for later
@@ -14,11 +15,13 @@ A website with color tools commonly used in web development.
     - Triadic
     - Tetradic
     - Square
-    - Analogous Complementary
 - Save color palettes for later
 ## Gradient Maker
-- Linear gradient
-    - CSS code snippet
+- Gradient type selection
+  - Linear
+  - Radial
+  - Conic
+- CSS code snippet
 ## Accessibility
 - Contrast Checker for WCAG 2.1 AA and 2.1 AAA
     - Standard text
