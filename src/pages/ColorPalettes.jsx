@@ -8,8 +8,7 @@ import {
     generateSquarePalette,
     generateSplitPalette,
     generateComplementaryPalette,
-    generateMonoPalette,
-    generateAnalogousComplementaryPalette
+    generateMonoPalette
 } from "../utils/paletteGenerators.js";
 import hexToRgb from "../utils/hexToRbg.js";
 import SavedSection from "../components/SavedSection/SavedSection.jsx";
@@ -35,8 +34,7 @@ const ColorPalettes = () => {
         { value: "split", label: "Split-Complementary" },
         { value: "triadic", label: "Triadic" },
         { value: "tetradic", label: "Tetradic" },
-        { value: "square", label: "Square" },
-        { value: "analogous-complementary", label: "Analogous Complementary" }
+        { value: "square", label: "Square" }
     ];
 
     React.useEffect(() => {
@@ -61,9 +59,6 @@ const ColorPalettes = () => {
                 break;
             case "square":
                 setColorPalette(generateSquarePalette(color));
-                break;
-            case "analogous-complementary":
-                setColorPalette(generateAnalogousComplementaryPalette(color));
                 break;
         }
     }, [color, palette, setColorPalette]);
