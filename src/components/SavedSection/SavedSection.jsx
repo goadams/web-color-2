@@ -2,9 +2,17 @@ import hexToRgb from "../../utils/hexToRbg.js";
 import React from "react";
 import "./SavedSection.css";
 
-const SavedSection = ({ colors = [], handleDelete, title = '' }) => (
+const SavedSection = ({ colors = [], handleDelete, title = '', handleFavorite }) => (
     <div className="saved-color-wrapper">
-        {title && <p className="saved-title">{title}</p>}
+        <div className="saved-color-heading-wrapper">
+            {title && <p className="saved-title">{title}</p>}
+            <button
+                className="star-button"
+                onClick={handleFavorite}
+            >
+                ☆
+            </button>
+        </div>
         <div className="saved-color-set">
             {colors.map((c, i) => (
                 <div className="saved-display" key={i} >

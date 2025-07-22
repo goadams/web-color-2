@@ -34,7 +34,7 @@
     justify-items: center;
 }
 
-.saved-color-wrapper button {
+.saved-delete {
     margin-top: .6rem;
 }
 
@@ -49,4 +49,34 @@
 .saved-color {
     width: 10rem;
     height: 5rem;
+}
+
+.saved-color-heading-wrapper {
+    display: flex;
+}
+
+
+
+.star-button {
+    font-size: 2.6rem;
+    line-height: 1;
+    padding: 0 1rem;
+    margin: -1rem 0 0 0;
+    min-height: 0;
+    height: auto;
+    display: block;
+    background: none;
+    border: none;
+    color: var(--color-primary-hover);
+}
+.star-button:hover {
+    color: var(--color-accent);
+    background: none;
+}
+
+.star-button.favorite {
+    color: var(--color-accent);
+}
+.star-button.favorite:hover {
+    color: var(--color-primary);
 }
