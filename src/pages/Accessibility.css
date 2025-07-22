@@ -1,0 +1,107 @@
+.contrast-colors-wrapper {
+    display: flex;
+}
+
+.slider-wrapper {
+    width: 50%;
+    justify-self: center;
+    justify-items: center;
+}
+
+
+
+.contrast-ratio {
+    font-size: 3rem;
+}
+
+
+.contrast-previews-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    line-height: 1.6;
+    justify-content: center;
+}
+.contrast-previews-wrapper > * {
+    border: 1px solid var(--color-primary);
+    border-radius: 1rem;
+    padding: 1rem;
+    margin: 1rem;
+    min-width: 25rem;
+    max-width: 50rem;
+}
+.contrast-previews-wrapper > * > *:last-child {
+    margin-top: 2rem;
+}
+
+.contrast-previews-standard {
+    font-size: 1.5rem;
+}
+
+.contrast-previews-large {
+    font-size: 2.4rem;
+}
+
+.contrast-previews-graphic {
+    font-size: 1.2rem;
+}
+
+.contrast-previews-graphic > *:last-child {
+    margin-top: 1rem;
+}
+
+.contrast-previews-pass-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.contrast-previews-pass-wrapper > * {
+    margin: 0 .5rem;
+}
+
+.contrast-grade {
+    padding: 0 .5rem;
+    border-radius: 1rem;
+}
+
+.contrast-grade-ratio {
+    width: 8rem;
+    justify-self: center;
+    margin-top: 1rem;
+    line-height: 1.6;
+}
+
+.contrast-colors-wrapper button {
+    margin-bottom: 1rem;
+}
+
+
+/* Slider */
+
+.react-aria-Slider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.react-aria-SliderTrack {
+    margin: 1rem 0 1rem;
+    background-color: var(--color-primary-hover);
+    height: 1rem;
+    width: 20rem;
+    border-radius: 3px;
+}
+
+.react-aria-SliderThumb {
+    margin-top: .5rem;
+    width: 2rem;
+    height: 2rem;
+    background: var(--color-primary);
+    border-radius: 50%;
+    border: .2rem solid var(--color-accent);
+    transition: background 0.2s;
+}
+
+.react-aria-SliderThumb[data-focused] {
+    outline: .2rem solid var(--color-accent);
+    outline-offset: .2rem;
+}

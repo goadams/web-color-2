@@ -2,7 +2,7 @@ import React from "react";
 import "./ColorChoice.css"
 import NumberInput from "../NumberInput/NumberInput.jsx";
 
-const ColorChoice = ({ name, color, handleChangeHex, handleChangeColorInput, position, handleChangePosition }) => {
+const ColorChoice = ({ name, color, handleChangeHex, handleChangeColorInput, position, handleChangePosition, children }) => {
     const modName = name.replace(/\s+/g, '-').toLowerCase();
 
     return (
@@ -45,6 +45,7 @@ const ColorChoice = ({ name, color, handleChangeHex, handleChangeColorInput, pos
                     </NumberInput>
                 </div>
             )}
+            {children}
         </div>
 )};
 
