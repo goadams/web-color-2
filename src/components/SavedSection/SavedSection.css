@@ -73,6 +73,12 @@
     color: var(--color-accent);
     background: none;
 }
+.star-button:focus {
+    background: none;
+    outline: 2px solid var(--color-accent);
+    outline-offset: -.5rem;
+    border-radius: 1rem;
+}
 
 .star-button.favorite {
     color: var(--color-accent);
