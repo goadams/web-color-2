@@ -26,6 +26,7 @@ const ColorPalettes = () => {
     const [palette, setPalette] = useLocalStorage("paletteTool-palette", { value: "monochromatic", label: "Monochromatic" });
     const [colorPalette, setColorPalette] = useLocalStorage("paletteTool-colorPalette", generateMonoPalette(color));
     const [savedPalettes, setSavedPalettes] = useLocalStorage("paletteTool-savedPalettes", []);
+    const [favorites, setFavorites] = useLocalStorage("paletteTool-favorites", []);
 
     const typeOptions = [
         { value: "monochromatic", label: "Monochromatic" },

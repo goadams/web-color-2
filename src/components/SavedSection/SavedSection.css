@@ -78,5 +78,5 @@
     color: var(--color-accent);
 }
 .star-button.favorite:hover {
-    color: var(--color-primary);
+    color: var(--color-primary-hover);
 }

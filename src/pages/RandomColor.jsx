@@ -11,6 +11,7 @@ import useLocalStorage from "../hooks/useLocalStorage.js";
 const RandomColor = () => {
     const [color, setColor] = useLocalStorage('randomTool-color', getRandomColor());
     const [savedColors, setSavedColors] = useLocalStorage('randomTool-savedColors', []);
+    const [favorites, setFavorites] = useLocalStorage('randomTool-favorites', []);
 
     const populateRandomColors = (num) => {
         const newColors = [];
@@ -20,9 +21,28 @@ const RandomColor = () => {
         setSavedColors([...newColors, ...savedColors]);
     };
 
+    const isFavoriteColor = (color) => favorites.some(favArr => favArr[0] === color[0]);
+
     const handleDelete = (i) => {
         setSavedColors(savedColors.filter((_, index) => index !== i));
     };
+
+    const handleDeleteFav = (i) => {
+        setFavorites(favorites.filter((_, index) => index !== i));
+    };
+
+    const handleFavorite = (i, group) => {
+        if (group === 'savedColors') {
+            const moveColor = savedColors[i];
+            setSavedColors(savedColors.filter((_, index) => index !== i));
+            setFavorites([ moveColor, ...favorites ]);
+        } else if (group === 'favorites') {
+            const moveColor = favorites[i];
+            setFavorites(favorites.filter((_, index) => index !== i));
+            setSavedColors([ moveColor, ...savedColors ]);
+        }
+    };
+
 
     return (
         <>
@@ -59,8 +79,27 @@ const RandomColor = () => {
                 <ElevatedSection maxWidth={"137rem"}>
                     <h2>Saved Colors</h2>
                     <div className="saved-color-container">
+                        {favorites.length > 0 && (
+                            <div className="saved-color-container">
+                                {favorites.map((c, i) => (
+                                    <SavedSection
+                                        key={i}
+                                        colors={c}
+                                        handleDelete={() => handleDeleteFav(i)}
+                                        handleFavorite={() => handleFavorite(i, 'favorites')}
+                                        isFavorite={isFavoriteColor(c)}
+                                    />
+                                ))}
+                            </div>
+                        )}
                         {savedColors.map((c, i) => (
-                            <SavedSection key={i} colors={c} handleDelete={() => handleDelete(i)} />
+                            <SavedSection
+                                key={i}
+                                colors={c}
+                                handleDelete={() => handleDelete(i)}
+                                handleFavorite={() => handleFavorite(i, 'savedColors')}
+                                isFavorite={isFavoriteColor(c)}
+                            />
                         ))}
                     </div>
                 </ElevatedSection>
