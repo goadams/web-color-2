@@ -102,6 +102,27 @@ const ColorPalettes = () => {
         ]);
     }
 
+    const isFavoritePalette = (pal) => {
+        return favorites.some(fav =>
+            fav.baseColor === pal.baseColor &&
+            fav.type === pal.type &&
+            fav.colors.length === pal.colors.length &&
+            fav.colors.every((c, i) => c === pal.colors[i])
+        );
+    }
+
+    const handleFavorite = (i, group) => {
+        if (group === 'savedPalettes') {
+            const movePalette = savedPalettes[i];
+            setSavedPalettes(savedPalettes.filter((_, index) => index !== i));
+            setFavorites([movePalette, ...favorites]);
+        } else if (group === 'favorites') {
+            const movePalette = favorites[i];
+            setFavorites(favorites.filter((_, index) => index !== i));
+            setSavedPalettes([movePalette, ...savedPalettes]);
+        }
+    };
+
     return (
         <>
             <Layout>
@@ -153,12 +174,24 @@ const ColorPalettes = () => {
                     >
                         <h2>Saved Palettes</h2>
                         <div className="palette-saved">
+                            {favorites.map((pal, i) => (
+                                <SavedSection
+                                    key={i}
+                                    colors={pal.colors}
+                                    handleDelete={() => handleDelete(i)}
+                                    title={`${pal.baseColor} ${pal.type} Palette`}
+                                    handleFavorite={() => handleFavorite(i, 'favorites')}
+                                    isFavorite={isFavoritePalette(pal)}
+                                />
+                            ))}
                             {savedPalettes.map((pal, i) => (
                                 <SavedSection
                                     key={i}
                                     colors={pal.colors}
                                     handleDelete={() => handleDelete(i)}
                                     title={`${pal.baseColor} ${pal.type} Palette`}
+                                    handleFavorite={() => handleFavorite(i, 'savedPalettes')}
+                                    isFavorite={isFavoritePalette(pal)}
                                 />
                             ))}
                         </div>
