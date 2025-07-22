@@ -28,7 +28,7 @@ const RandomColor = () => {
         <>
             <Layout>
                 <h1>Random Color</h1>
-                <ElevatedSection width={"auto"}>
+                <ElevatedSection width={"120rem"}>
                     <div className="random-color-display" style={{ background: color }}>
                         <p className="random-color-text" style={{ color: getTextBestColor(color) }}>
                             {color}

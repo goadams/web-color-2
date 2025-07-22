@@ -3,7 +3,7 @@
 
 .random-color-display {
     width: 100%;
-    max-width: 100rem;
+    max-width: 120rem;
     justify-self: center;
     display: flex;
     flex-direction: column;

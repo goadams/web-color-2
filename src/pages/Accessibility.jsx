@@ -212,7 +212,7 @@ const Accessibility = () => {
                                 </div>
                             </ElevatedSection>
 
-                            <ElevatedSection>
+                            <ElevatedSection maxWidth={"145rem"}>
                                 <h2>Previews</h2>
                                 <div className="contrast-previews-wrapper">
                                     <div style={{ color: colors[0], backgroundColor: colors[1], borderColor: getTextBestColor(colors[1]) }}>

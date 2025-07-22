@@ -95,7 +95,7 @@ const Gradients = () => {
                             </div>)}
                         </OptionSelect>
                     </ElevatedSection>
-                    <ElevatedSection>
+                    <ElevatedSection maxWidth={"70rem"}>
                         <h2>Color Selection:</h2>
                         <div className="gradient-colors-wrapper">
                             <ColorChoice
@@ -124,7 +124,7 @@ const Gradients = () => {
                             </ColorChoice>
                         </div>
                     </ElevatedSection>
-                    <ElevatedSection>
+                    <ElevatedSection maxWidth={"70rem"}>
                         <h2>CSS Code:</h2>
                         <p className="gradient-code">{gradientCode}</p>
                     </ElevatedSection>
