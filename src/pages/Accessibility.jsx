@@ -11,6 +11,7 @@ import getContrastRatio from "../utils/getContrastRatio.js";
 import getTextBestColor from "../utils/getTextBestColor.js";
 import hslToHex from "../utils/hslToHex.js";
 import getRandomColor from "../utils/getRandomColor.js";
+import useLocalStorage from "../hooks/useLocalStorage.js";
 
 
 function getGradeColor(grade) {
@@ -27,14 +28,13 @@ function getGradeColor(grade) {
 }
 
 const Accessibility = () => {
-    const [colors, setColors] = React.useState(['#000000', '#FFFFFF']);
-    const [colorInputs, setColorInputs] = React.useState(['#000000', '#FFFFFF']);
-    const [level, setLevel] = React.useState({ value: 'w21aaa', label: 'WCAG 2.1 AAA' });
-    const [tool, setTool] = React.useState({ value: "contrast", label: "Contrast Checker" });
-    const [ratio, setRatio] = React.useState(getContrastRatio(colors[0], colors[1]).toFixed(2));
     const [sampleText, setSampleText] = React.useState("This is sample text...");
     const [grades, setGrades] = React.useState(['PASS', 'PASS', 'PASS', 'PASS']);
-
+    const [colors, setColors] = useLocalStorage("accessTool-colors",['#000000', '#FFFFFF']);
+    const [colorInputs, setColorInputs] = useLocalStorage("accessTool-colorInputs",['#000000', '#FFFFFF']);
+    const [level, setLevel] = useLocalStorage("accessTool-level",{ value: 'w21aaa', label: 'WCAG 2.1 AAA' });
+    const [tool, setTool] = useLocalStorage("accessTool-tool",{ value: "contrast", label: "Contrast Checker" });
+    const [ratio, setRatio] = useLocalStorage("accessTool-ratio",getContrastRatio(colors[0], colors[1]).toFixed(2));
 
     const levelOptions = [
         { value: 'w21aa', label: 'WCAG 2.1 AA' },

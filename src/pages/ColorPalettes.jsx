@@ -17,14 +17,15 @@ import ElevatedSection from "../components/ElevatedSection/ElevatedSection.jsx";
 import OptionSelect from "../components/OptionSelect/OptionSelect.jsx";
 import ColorChoice from "../components/ColorChoice/ColorChoice.jsx";
 import { selectCustomStyles } from "../utils/selectCustomStyles.js";
+import useLocalStorage from "../hooks/useLocalStorage.js";
 
 
 const ColorPalettes = () => {
-    const [color, setColor] = React.useState("#A2B7C3");
-    const [colorInput, setColorInput] = React.useState("#A2B7C3");
-    const [palette, setPalette] = React.useState({ value: "monochromatic", label: "Monochromatic" });
-    const [colorPalette, setColorPalette] = React.useState(generateMonoPalette(color));
-    const [savedPalettes, setSavedPalettes] = React.useState([]);
+    const [color, setColor] = useLocalStorage("paletteTool-color", "#A2B7C3");
+    const [colorInput, setColorInput] = useLocalStorage("paletteTool-colorInput", "#A2B7C3");
+    const [palette, setPalette] = useLocalStorage("paletteTool-palette", { value: "monochromatic", label: "Monochromatic" });
+    const [colorPalette, setColorPalette] = useLocalStorage("paletteTool-colorPalette", generateMonoPalette(color));
+    const [savedPalettes, setSavedPalettes] = useLocalStorage("paletteTool-savedPalettes", []);
 
     const typeOptions = [
         { value: "monochromatic", label: "Monochromatic" },

@@ -6,14 +6,15 @@ import ColorChoice from "../components/ColorChoice/ColorChoice.jsx";
 import { selectCustomStyles } from "../utils/selectCustomStyles.js";
 import "./Gradients.css";
 import NumberInput from "../components/NumberInput/NumberInput.jsx";
+import useLocalStorage from "../hooks/useLocalStorage.js";
 
 const Gradients = () => {
-    const [colors, setColors] = React.useState(["#A2B7C3", "#BADDAD"]);
-    const [colorInputs, setColorInputs] = React.useState(["#A2B7C3", "#BADDAD"]);
-    const [positions, setPositions] = React.useState([0, 100]);
-    const [angle, setAngle] = React.useState(90);
-    const [gradient, setGradient] = React.useState({ value: "linear", label: "Linear"});
-    const [gradientCode, setGradientCode] = React.useState(`linear-gradient(${angle}deg, ${colors[0]} ${positions[0]}%, ${colors[1]} ${positions[1]}%)`);
+    const [colors, setColors] = useLocalStorage("gradientTool-colors", ["#00A2FF", "#1B6600"]);
+    const [colorInputs, setColorInputs] = useLocalStorage("gradientTool-colorInputs", ["#00A2FF", "#1B6600"]);
+    const [positions, setPositions] = useLocalStorage("gradientTool-positions", [0, 100]);
+    const [angle, setAngle] = useLocalStorage("gradientTool-angle", 90);
+    const [gradient, setGradient] = useLocalStorage("gradientTool-gradient", { value: "linear", label: "Linear"});
+    const [gradientCode, setGradientCode] = useLocalStorage("gradientTool-code", `linear-gradient(${angle}deg, ${colors[0]} ${positions[0]}%, ${colors[1]} ${positions[1]}%)`);
 
     const typeOptions = [
         { value: "linear", label: "Linear" },

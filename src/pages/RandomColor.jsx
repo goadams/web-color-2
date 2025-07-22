@@ -6,11 +6,11 @@ import "./RandomColor.css"
 import hexToRgb from "../utils/hexToRbg.js";
 import SavedSection from "../components/SavedSection/SavedSection.jsx";
 import ElevatedSection from "../components/ElevatedSection/ElevatedSection.jsx";
-
+import useLocalStorage from "../hooks/useLocalStorage.js";
 
 const RandomColor = () => {
-    const [color, setColor] = React.useState(getRandomColor());
-    const [savedColors, setSavedColors] = React.useState([]);
+    const [color, setColor] = useLocalStorage('randomTool-color', getRandomColor());
+    const [savedColors, setSavedColors] = useLocalStorage('randomTool-savedColors', []);
 
     const populateRandomColors = (num) => {
         const newColors = [];
