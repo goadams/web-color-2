@@ -82,8 +82,12 @@ const ColorPalettes = () => {
         setPalette(selected);
     };
 
-    const handleDelete = (num) => {
-        setSavedPalettes(prevPalettes => prevPalettes.filter((_, i) => i !== num));
+    const handleDelete = (num, group) => {
+        if (group === 'savedPalettes') {
+            setSavedPalettes(prevPalettes => prevPalettes.filter((_, i) => i !== num));
+        } else if (group === 'favorites') {
+            setFavorites(prevFavorites => prevFavorites.filter((_, i) => i !== num));
+        }
     };
 
     const handleSave = () => {
@@ -174,7 +178,7 @@ const ColorPalettes = () => {
                                 <SavedSection
                                     key={i}
                                     colors={pal.colors}
-                                    handleDelete={() => handleDelete(i)}
+                                    handleDelete={() => handleDelete(i, 'favorites')}
                                     title={`${pal.baseColor} ${pal.type} Palette`}
                                     handleFavorite={() => handleFavorite(i, 'favorites')}
                                     isFavorite={isFavoritePalette(pal)}
@@ -184,7 +188,7 @@ const ColorPalettes = () => {
                                 <SavedSection
                                     key={i}
                                     colors={pal.colors}
-                                    handleDelete={() => handleDelete(i)}
+                                    handleDelete={() => handleDelete(i, 'savedPalettes')}
                                     title={`${pal.baseColor} ${pal.type} Palette`}
                                     handleFavorite={() => handleFavorite(i, 'savedPalettes')}
                                     isFavorite={isFavoritePalette(pal)}
