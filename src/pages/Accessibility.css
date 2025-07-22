@@ -1,5 +1,8 @@
 .contrast-colors-wrapper {
     display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }
 
 .slider-wrapper {
@@ -7,8 +10,6 @@
     justify-self: center;
     justify-items: center;
 }
-
-
 
 .contrast-ratio {
     font-size: 3rem;
@@ -104,4 +105,20 @@
 .react-aria-SliderThumb[data-focused] {
     outline: .2rem solid var(--color-accent);
     outline-offset: .2rem;
+}
+
+
+@media (min-width: 2000px) {
+    .contrast-container {
+        display: grid;
+        grid-template-columns: 1fr auto auto 1fr;
+        grid-template-areas: ". options preview .";
+        align-items: center;
+    }
+    .contrast-options-container {
+        grid-area: options;
+    }
+    .contrast-preview-container {
+        grid-area: preview;
+    }
 }

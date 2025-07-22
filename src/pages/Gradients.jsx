@@ -100,98 +100,109 @@ const Gradients = () => {
 
                 </div>
                 <div className="gradients-container">
-                    <ElevatedSection
-                        maxWidth={"50rem"}
-                        minWidth={"30rem"}
-                    >
-                        <OptionSelect
-                            name="Gradient Type"
-                            value={gradient}
-                            styles={selectCustomStyles}
-                            options={typeOptions}
-                            onChange={handleChangeGradient}
+                    <div className="gradients-type-container">
+                        <ElevatedSection
+                            maxWidth={"50rem"}
+                            minWidth={"30rem"}
                         >
-                            {gradient.value !== "radial" && (
-                                <div className="gradient-angle-wrapper">
-                                <label htmlFor="gradient-angle-input">Angle</label>
-                                <NumberInput
-                                    id="gradient-angle-input"
-                                    min={0}
-                                    max={360}
-                                    step={2}
-                                    value={angle}
-                                    onChange={val => setAngle(val ?? 0)}
+                            <OptionSelect
+                                name="Gradient Type"
+                                value={gradient}
+                                styles={selectCustomStyles}
+                                options={typeOptions}
+                                onChange={handleChangeGradient}
+                            >
+                                {gradient.value !== "radial" && (
+                                    <div className="gradient-angle-wrapper">
+                                        <label htmlFor="gradient-angle-input">Angle</label>
+                                        <NumberInput
+                                            id="gradient-angle-input"
+                                            min={0}
+                                            max={360}
+                                            step={2}
+                                            value={angle}
+                                            onChange={val => setAngle(val ?? 0)}
+                                        >
+                                        </NumberInput>
+                                    </div>)}
+                            </OptionSelect>
+                        </ElevatedSection>
+                    </div>
+
+                    <div className="gradients-color-container">
+                        <ElevatedSection maxWidth={"70rem"}>
+                            <h2>Color Selection:</h2>
+                            <div className="gradient-colors-wrapper">
+                                <ColorChoice
+                                    name="Color 1"
+                                    color={colorInputs[0]}
+                                    handleChangeHex={(e) => handleChangeHex(0, e)}
+                                    handleChangeColorInput={(e) => handleChangeColorInput(0, e)}
+                                    position={positions[0]}
+                                    handleChangePosition={val => {
+                                        const newVal = val ?? 0;
+                                        setPositions(positions.map((p, i) => i === 0 ? newVal : p));
+                                    }}
                                 >
-                                </NumberInput>
-                            </div>)}
-                        </OptionSelect>
-                    </ElevatedSection>
-                    <ElevatedSection maxWidth={"70rem"}>
-                        <h2>Color Selection:</h2>
-                        <div className="gradient-colors-wrapper">
-                            <ColorChoice
-                                name="Color 1"
-                                color={colorInputs[0]}
-                                handleChangeHex={(e) => handleChangeHex(0, e)}
-                                handleChangeColorInput={(e) => handleChangeColorInput(0, e)}
-                                position={positions[0]}
-                                handleChangePosition={val => {
-                                    const newVal = val ?? 0;
-                                    setPositions(positions.map((p, i) => i === 0 ? newVal : p));
-                                }}
+                                </ColorChoice>
+                                <ColorChoice
+                                    name="Color 2"
+                                    color={colorInputs[1]}
+                                    handleChangeHex={(e) => handleChangeHex(1, e)}
+                                    handleChangeColorInput={(e) => handleChangeColorInput(1, e)}
+                                    position={positions[1]}
+                                    handleChangePosition={val => {
+                                        const newVal = val ?? 0;
+                                        setPositions(positions.map((p, i) => i === 1 ? newVal : p));
+                                    }}
+                                >
+                                </ColorChoice>
+                            </div>
+                        </ElevatedSection>
+                    </div>
+
+                    <div className="gradients-code-container">
+                        <ElevatedSection maxWidth={"70rem"}>
+                            <h2>CSS Code</h2>
+                            <p className="gradient-code">{gradientCode}</p>
+                            <button
+                                className="gradient-save-button"
+                                onClick={() => setSavedGradients(prevSaved => [ { colors: colors, code: gradientCode }, ...prevSaved ])}
                             >
-                            </ColorChoice>
-                            <ColorChoice
-                                name="Color 2"
-                                color={colorInputs[1]}
-                                handleChangeHex={(e) => handleChangeHex(1, e)}
-                                handleChangeColorInput={(e) => handleChangeColorInput(1, e)}
-                                position={positions[1]}
-                                handleChangePosition={val => {
-                                    const newVal = val ?? 0;
-                                    setPositions(positions.map((p, i) => i === 1 ? newVal : p));
-                                }}
-                            >
-                            </ColorChoice>
-                        </div>
-                        <button
-                            className="gradient-save-button"
-                            onClick={() => setSavedGradients(prevSaved => [ { colors: colors, code: gradientCode }, ...prevSaved ])}
-                        >
-                            Save Gradient
-                        </button>
-                    </ElevatedSection>
-                    <ElevatedSection maxWidth={"70rem"}>
-                        <h2>CSS Code</h2>
-                        <p className="gradient-code">{gradientCode}</p>
-                    </ElevatedSection>
-                    <ElevatedSection maxWidth={"160rem"}>
-                        <h2>Saved Gradients</h2>
-                        <div className="gradient-saved-wrapper">
-                            {favorites.map((g, i) => (
-                                <SavedSection
-                                    key={i}
-                                    colors={g.colors}
-                                    handleDelete={() => handleDelete(i, 'favorites')}
-                                    title={g.code}
-                                    gradientCode={g.code}
-                                    handleFavorite={() => handleFavorite(i, 'favorites')}
-                                    isFavorite={isFavoriteGradient(g)}
-                                />
-                            ))}
-                            {savedGradients.map((g, i) => (
-                                <SavedSection
-                                    key={i}
-                                    colors={g.colors}
-                                    handleDelete={() => handleDelete(i, 'savedGradients')}
-                                    title={g.code}
-                                    gradientCode={g.code}
-                                    handleFavorite={() => handleFavorite(i, 'savedGradients')}
-                                    isFavorite={isFavoriteGradient(g)}
-                                />
-                            ))}
-                        </div>
-                    </ElevatedSection>
+                                Save Gradient
+                            </button>
+                        </ElevatedSection>
+                    </div>
+
+                    <div className="gradients-saved-container">
+                        <ElevatedSection maxWidth={"160rem"}>
+                            <h2>Saved Gradients</h2>
+                            <div className="gradient-saved-wrapper">
+                                {favorites.map((g, i) => (
+                                    <SavedSection
+                                        key={i}
+                                        colors={g.colors}
+                                        handleDelete={() => handleDelete(i, 'favorites')}
+                                        title={g.code}
+                                        gradientCode={g.code}
+                                        handleFavorite={() => handleFavorite(i, 'favorites')}
+                                        isFavorite={isFavoriteGradient(g)}
+                                    />
+                                ))}
+                                {savedGradients.map((g, i) => (
+                                    <SavedSection
+                                        key={i}
+                                        colors={g.colors}
+                                        handleDelete={() => handleDelete(i, 'savedGradients')}
+                                        title={g.code}
+                                        gradientCode={g.code}
+                                        handleFavorite={() => handleFavorite(i, 'savedGradients')}
+                                        isFavorite={isFavoriteGradient(g)}
+                                    />
+                                ))}
+                            </div>
+                        </ElevatedSection>
+                    </div>
                 </div>
             </Layout>
         </>

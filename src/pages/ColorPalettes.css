@@ -1,12 +1,12 @@
 .palettes-container {
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 1fr auto 105rem 1fr;
     grid-template-areas:
-        "picker  show"
-        "saved   saved";
+        ".      picker  show    ."
+        "saved  saved   saved   saved";
 }
 
-@media (max-width: 1400px) {
+@media (max-width: 1415px) {
     .palettes-container {
         display: flex;
         flex-direction: column;
@@ -31,13 +31,6 @@
 }
 
 /* Color picker */
-
-/*TODO: REMOVE*/
-.palette-base-hex-wrapper {
-    display: flex;
-    flex-direction: column;
-    margin: 4rem 0 2rem 0;
-}
 
 .palette-input[type="color"] {
     height: 8rem;
@@ -93,7 +86,7 @@
     justify-content: center;
     text-align: center;
     line-height: 1;
-    width: 13rem;
+    width: 14.5rem;
 }
 
 .palette-color-wrapper p {

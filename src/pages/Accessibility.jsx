@@ -117,164 +117,169 @@ const Accessibility = () => {
                     </ElevatedSection>
 
                     {tool.value === 'contrast' && (
-                        <>
-                            <ElevatedSection
-                                maxWidth={"50rem"}
-                                minWidth={"30rem"}
-                            >
-                                <OptionSelect
-                                    name="Level"
-                                    value={level}
-                                    styles={selectCustomStyles}
-                                    options={levelOptions}
-                                    onChange={handleChangeLevel}
+                        <div className="contrast-container">
+                            <div className="contrast-options-container">
+                                <ElevatedSection
+                                    maxWidth={"50rem"}
+                                    minWidth={"30rem"}
                                 >
-                                </OptionSelect>
-                            </ElevatedSection>
-
-                            <ElevatedSection width="auto">
-                                <div className="contrast-colors-wrapper">
-                                    <ColorChoice
-                                        name="Foreground Color"
-                                        color={colorInputs[0]}
-                                        handleChangeHex={(e) => handleChangeHex(0, e)}
-                                        handleChangeColorInput={(e) => handleChangeColorInput(0, e)}
+                                    <OptionSelect
+                                        name="Level"
+                                        value={level}
+                                        styles={selectCustomStyles}
+                                        options={levelOptions}
+                                        onChange={handleChangeLevel}
                                     >
-                                        <div className={'slider-wrapper'}>
-                                            <Slider
-                                                id="foreground-slider"
-                                                value={hexToHSL(colors[0])[2]}
-                                                onChange={val => {
-                                                    const newLight = Number(val);
-                                                    const [hue, sat] = hexToHSL(colors[0]);
-                                                    const newHex = hslToHex(hue, sat, newLight);
-                                                    setColors(prev => prev.map((c, i) => i === 0 ? newHex : c));
-                                                    setColorInputs(prev => prev.map((c, i) => i === 0 ? newHex : c));
-                                                }}
-                                                min={0}
-                                                max={100}
-                                            >
-                                                <Label>Foreground Lightness</Label>
-                                                <SliderOutput />
-                                                <SliderTrack>
-                                                    <SliderThumb />
-                                                </SliderTrack>
-                                            </Slider>
-                                        </div>
-                                        <button
-                                            onClick={() => {
-                                                const rand = getRandomColor();
-                                                setColors(prev => prev.map((c, i) => i === 0 ? rand : c))
-                                                setColorInputs(prev => prev.map((c, i) => i === 0 ? rand : c))
-                                            }}
-                                        >Random Foreground</button>
-                                    </ColorChoice>
-                                    <ColorChoice
-                                        name="Background Color"
-                                        color={colorInputs[1]}
-                                        handleChangeHex={(e) => handleChangeHex(1, e)}
-                                        handleChangeColorInput={(e) => handleChangeColorInput(1, e)}
-                                    >
-                                        <div className={'slider-wrapper'}>
-                                            <Slider
-                                                id="background-slider"
-                                                value={hexToHSL(colors[1])[2]}
-                                                onChange={val => {
-                                                    const newLight = Number(val);
-                                                    const [hue, sat] = hexToHSL(colors[1]);
-                                                    const newHex = hslToHex(hue, sat, newLight);
-                                                    setColors(prev => prev.map((c, i) => i === 1 ? newHex : c));
-                                                    setColorInputs(prev => prev.map((c, i) => i === 1 ? newHex : c));
-                                                }}
-                                                min={0}
-                                                max={100}
-                                            >
-                                                <Label>Background Lightness</Label>
-                                                <SliderOutput />
-                                                <SliderTrack>
-                                                    <SliderThumb />
-                                                </SliderTrack>
-                                            </Slider>
-                                        </div>
-                                        <button
-                                            onClick={() => {
-                                                const rand = getRandomColor();
-                                                setColors(prev => prev.map((c, i) => i === 1 ? rand : c))
-                                                setColorInputs(prev => prev.map((c, i) => i === 1 ? rand : c))
-                                            }}
-                                        >Random Background</button>
-                                    </ColorChoice>
-                                </div>
-                                <div>
-                                    <h2>Contrast Ratio</h2>
-                                    <p className="contrast-ratio">{ratio}:1</p>
-                                    <p className="contrast-grade contrast-grade-ratio" style={{ backgroundColor: getGradeColor(grades[0]), color: getTextBestColor(getGradeColor(grades[0]))}}>{grades[0]}</p>
-                                </div>
-                            </ElevatedSection>
+                                    </OptionSelect>
+                                </ElevatedSection>
 
-                            <ElevatedSection maxWidth={"145rem"}>
-                                <h2>Previews</h2>
-                                <div className="contrast-previews-wrapper">
-                                    <div style={{ color: colors[0], backgroundColor: colors[1], borderColor: getTextBestColor(colors[1]) }}>
-                                        <div className="contrast-previews-pass-wrapper">
-                                            <p style={{ color: getTextBestColor(colors[1])}}>Standard Text</p>
-                                            <p className="contrast-grade" style={{ backgroundColor: getGradeColor(grades[1]), color: getTextBestColor(getGradeColor(grades[1]))}}>{grades[1]}</p>
-                                        </div>
-                                        <p className="contrast-previews-standard">A vivid mix of hues jumps quickly, dazzling eyes with zest. When black text overlays a white background, visibility peaks; yet, quirky magenta or yellow fonts perplex viewers.</p>
-                                    </div>
-                                    <div style={{ color: colors[0], backgroundColor: colors[1], borderColor: getTextBestColor(colors[1]) }}>
-                                        <div className="contrast-previews-pass-wrapper">
-                                            <p style={{ color: getTextBestColor(colors[1])}}>Large Text</p>
-                                            <p className="contrast-grade" style={{ backgroundColor: getGradeColor(grades[2]), color: getTextBestColor(getGradeColor(grades[2]))}}>{grades[2]}</p>
-                                        </div>
-                                        <p className="contrast-previews-large">A vivid mix of hues jumps quickly, dazzling eyes with zest. When black text overlays a white background, visibility peaks; yet, quirky magenta or yellow fonts perplex viewers.</p>
-                                    </div>
-                                    <div style={{ color: colors[0], backgroundColor: colors[1], borderColor: getTextBestColor(colors[1]) }}>
-                                        <div className="contrast-previews-pass-wrapper">
-                                            <p style={{ color: getTextBestColor(colors[1])}}>Graphics and UI</p>
-                                            <p className="contrast-grade" style={{ backgroundColor: getGradeColor(grades[3]), color: getTextBestColor(getGradeColor(grades[3]))}}>{grades[3]}</p>
-                                        </div>
-                                        <div className="contrast-previews-graphic" style={{ backgroundColor: colors[1] }}>
-                                            <div className="graphic-display">
-                                                <svg
-                                                    id="rectIcon"
-                                                    width="80"
-                                                    height="80"
-                                                    viewBox="0 0 100 100"
-                                                    style={{display: "block", color: colors[0], margin: "auto" }}
+                                <ElevatedSection width="auto">
+                                    <div className="contrast-colors-wrapper">
+                                        <ColorChoice
+                                            name="Foreground Color"
+                                            color={colorInputs[0]}
+                                            handleChangeHex={(e) => handleChangeHex(0, e)}
+                                            handleChangeColorInput={(e) => handleChangeColorInput(0, e)}
+                                        >
+                                            <div className={'slider-wrapper'}>
+                                                <Slider
+                                                    id="foreground-slider"
+                                                    value={hexToHSL(colors[0])[2]}
+                                                    onChange={val => {
+                                                        const newLight = Number(val);
+                                                        const [hue, sat] = hexToHSL(colors[0]);
+                                                        const newHex = hslToHex(hue, sat, newLight);
+                                                        setColors(prev => prev.map((c, i) => i === 0 ? newHex : c));
+                                                        setColorInputs(prev => prev.map((c, i) => i === 0 ? newHex : c));
+                                                    }}
+                                                    min={0}
+                                                    max={100}
                                                 >
-                                                    <rect
-                                                        width="75"
-                                                        height="50"
-                                                        x={14}
-                                                        y={26}
-                                                        fill={colors[0]}
-                                                    />
-                                                </svg>
-                                                <svg
-                                                    id="starIcon"
-                                                    width="80"
-                                                    height="80"
-                                                    viewBox="0 0 100 100"
-                                                    style={{ display: "block", color: colors[0], margin: "auto" }}
-                                                >
-                                                    <polygon
-                                                        points="50,10 61,39 92,39 66,59 75,90 50,70 25,90 34,59 8,39 39,39"
-                                                        fill={colors[0]}
-                                                    />
-                                                </svg>
+                                                    <Label>Foreground Lightness</Label>
+                                                    <SliderOutput />
+                                                    <SliderTrack>
+                                                        <SliderThumb />
+                                                    </SliderTrack>
+                                                </Slider>
                                             </div>
-                                            <input
-                                                type="text"
-                                                style={{ borderColor: colors[0], borderWidth: 2, borderStyle: "solid" }}
-                                                value={sampleText}
-                                                onChange={(e) => setSampleText(e.target.value)}
-                                            />
+                                            <button
+                                                onClick={() => {
+                                                    const rand = getRandomColor();
+                                                    setColors(prev => prev.map((c, i) => i === 0 ? rand : c))
+                                                    setColorInputs(prev => prev.map((c, i) => i === 0 ? rand : c))
+                                                }}
+                                            >Random Foreground</button>
+                                        </ColorChoice>
+                                        <ColorChoice
+                                            name="Background Color"
+                                            color={colorInputs[1]}
+                                            handleChangeHex={(e) => handleChangeHex(1, e)}
+                                            handleChangeColorInput={(e) => handleChangeColorInput(1, e)}
+                                        >
+                                            <div className={'slider-wrapper'}>
+                                                <Slider
+                                                    id="background-slider"
+                                                    value={hexToHSL(colors[1])[2]}
+                                                    onChange={val => {
+                                                        const newLight = Number(val);
+                                                        const [hue, sat] = hexToHSL(colors[1]);
+                                                        const newHex = hslToHex(hue, sat, newLight);
+                                                        setColors(prev => prev.map((c, i) => i === 1 ? newHex : c));
+                                                        setColorInputs(prev => prev.map((c, i) => i === 1 ? newHex : c));
+                                                    }}
+                                                    min={0}
+                                                    max={100}
+                                                >
+                                                    <Label>Background Lightness</Label>
+                                                    <SliderOutput />
+                                                    <SliderTrack>
+                                                        <SliderThumb />
+                                                    </SliderTrack>
+                                                </Slider>
+                                            </div>
+                                            <button
+                                                onClick={() => {
+                                                    const rand = getRandomColor();
+                                                    setColors(prev => prev.map((c, i) => i === 1 ? rand : c))
+                                                    setColorInputs(prev => prev.map((c, i) => i === 1 ? rand : c))
+                                                }}
+                                            >Random Background</button>
+                                        </ColorChoice>
+                                    </div>
+                                    <div>
+                                        <h2>Contrast Ratio</h2>
+                                        <p className="contrast-ratio">{ratio}:1</p>
+                                        <p className="contrast-grade contrast-grade-ratio" style={{ backgroundColor: getGradeColor(grades[0]), color: getTextBestColor(getGradeColor(grades[0]))}}>{grades[0]}</p>
+                                    </div>
+                                </ElevatedSection>
+                            </div>
+
+                            <div className="contrast-preview-container">
+                                <ElevatedSection maxWidth={"145rem"}>
+                                    <h2>Previews</h2>
+                                    <div className="contrast-previews-wrapper">
+                                        <div style={{ color: colors[0], backgroundColor: colors[1], borderColor: getTextBestColor(colors[1]) }}>
+                                            <div className="contrast-previews-pass-wrapper">
+                                                <p style={{ color: getTextBestColor(colors[1])}}>Standard Text</p>
+                                                <p className="contrast-grade" style={{ backgroundColor: getGradeColor(grades[1]), color: getTextBestColor(getGradeColor(grades[1]))}}>{grades[1]}</p>
+                                            </div>
+                                            <p className="contrast-previews-standard">A vivid mix of hues jumps quickly, dazzling eyes with zest. When black text overlays a white background, visibility peaks; yet, quirky magenta or yellow fonts perplex viewers.</p>
+                                        </div>
+                                        <div style={{ color: colors[0], backgroundColor: colors[1], borderColor: getTextBestColor(colors[1]) }}>
+                                            <div className="contrast-previews-pass-wrapper">
+                                                <p style={{ color: getTextBestColor(colors[1])}}>Large Text</p>
+                                                <p className="contrast-grade" style={{ backgroundColor: getGradeColor(grades[2]), color: getTextBestColor(getGradeColor(grades[2]))}}>{grades[2]}</p>
+                                            </div>
+                                            <p className="contrast-previews-large">A vivid mix of hues jumps quickly, dazzling eyes with zest. When black text overlays a white background, visibility peaks; yet, quirky magenta or yellow fonts perplex viewers.</p>
+                                        </div>
+                                        <div style={{ color: colors[0], backgroundColor: colors[1], borderColor: getTextBestColor(colors[1]) }}>
+                                            <div className="contrast-previews-pass-wrapper">
+                                                <p style={{ color: getTextBestColor(colors[1])}}>Graphics and UI</p>
+                                                <p className="contrast-grade" style={{ backgroundColor: getGradeColor(grades[3]), color: getTextBestColor(getGradeColor(grades[3]))}}>{grades[3]}</p>
+                                            </div>
+                                            <div className="contrast-previews-graphic" style={{ backgroundColor: colors[1] }}>
+                                                <div className="graphic-display">
+                                                    <svg
+                                                        id="rectIcon"
+                                                        width="80"
+                                                        height="80"
+                                                        viewBox="0 0 100 100"
+                                                        style={{display: "block", color: colors[0], margin: "auto" }}
+                                                    >
+                                                        <rect
+                                                            width="75"
+                                                            height="50"
+                                                            x={14}
+                                                            y={26}
+                                                            fill={colors[0]}
+                                                        />
+                                                    </svg>
+                                                    <svg
+                                                        id="starIcon"
+                                                        width="80"
+                                                        height="80"
+                                                        viewBox="0 0 100 100"
+                                                        style={{ display: "block", color: colors[0], margin: "auto" }}
+                                                    >
+                                                        <polygon
+                                                            points="50,10 61,39 92,39 66,59 75,90 50,70 25,90 34,59 8,39 39,39"
+                                                            fill={colors[0]}
+                                                        />
+                                                    </svg>
+                                                </div>
+                                                <input
+                                                    type="text"
+                                                    style={{ borderColor: colors[0], borderWidth: 2, borderStyle: "solid" }}
+                                                    value={sampleText}
+                                                    onChange={(e) => setSampleText(e.target.value)}
+                                                />
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </ElevatedSection>
-                        </>)}
+                                </ElevatedSection>
+                            </div>
+                        </div>
+                    )}
                 </div>
             </Layout>
         </>

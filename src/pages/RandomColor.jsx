@@ -76,7 +76,7 @@ const RandomColor = () => {
                     </div>
                 </ElevatedSection>
 
-                <ElevatedSection maxWidth={"137rem"}>
+                <ElevatedSection maxWidth={"147rem"}>
                     <h2>Saved Colors</h2>
                     <div className="saved-color-container">
                         {favorites.length > 0 && (

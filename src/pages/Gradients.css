@@ -20,7 +20,7 @@
 }
 
 .gradient-save-button {
-    margin-top: 2rem;
+    margin-top: 1rem;
 }
 
 .gradient-saved-wrapper {
@@ -29,3 +29,29 @@
     justify-content: center;
 }
 
+
+@media (min-width: 1700px) {
+    .gradients-container {
+        display: grid;
+        grid-template-columns: 1fr auto auto auto 1fr;
+        grid-template-areas:
+            ".      type    color   code    ."
+            "saved  saved   saved   saved   saved";
+    }
+    .gradients-type-container {
+        grid-area: type;
+        padding: 2rem;
+    }
+    .gradients-color-container {
+        grid-area: color;
+        padding: 2rem;
+    }
+    .gradients-code-container {
+        grid-area: code;
+        padding: 2rem;
+    }
+    .gradients-saved-container {
+        grid-area: saved;
+        padding: 2rem;
+    }
+}

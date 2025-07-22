@@ -166,6 +166,7 @@ const ColorPalettes = () => {
                     </ElevatedSection>
                     <ElevatedSection
                         gridArea={'saved'}
+                        maxWidth={"220rem"}
                     >
                         <h2>Saved Palettes</h2>
                         <div className="palette-saved">
