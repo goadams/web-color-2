@@ -25,30 +25,30 @@ const Home = () => {
                     <ul className="nav-list-home">
                         <li>
                             <NavLink
-                                to={"/random"}
+                                to={"/random-color"}
                                 className="nav-button-home">
                                 Random Color
                             </NavLink>
                         </li>
                         <li>
                             <NavLink
-                                to={"/palettes"}
+                                to={"/color-palettes"}
                                 className="nav-button-home">
-                                Color Palette
+                                Color Palettes
                             </NavLink>
                         </li>
                         <li>
                             <NavLink
-                                to={"/gradients"}
+                                to={"/gradient-creator"}
                                 className="nav-button-home">
-                                Gradient
+                                Gradient Creator
                             </NavLink>
                         </li>
                         <li>
                             <NavLink
-                                to={"/accessibility"}
+                                to={"/contrast-checker"}
                                 className="nav-button-home">
-                                Accessibility
+                                Contrast Checker
                             </NavLink>
                         </li>
                     </ul>

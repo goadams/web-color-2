@@ -11,10 +11,10 @@ const App = () => {
         <Router>
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/random" element={<RandomColor />} />
-                <Route path="/palettes" element={<ColorPalettes />} />
-                <Route path="/gradients" element={<Gradients />} />
-                <Route path="/accessibility" element={<Accessibility />} />
+                <Route path="/random-color" element={<RandomColor />} />
+                <Route path="/color-palettes" element={<ColorPalettes />} />
+                <Route path="/gradient-creator" element={<Gradients />} />
+                <Route path="/contrast-checker" element={<Accessibility />} />
             </Routes>
         </Router>
     );

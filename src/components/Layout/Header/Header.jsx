@@ -30,30 +30,30 @@ const Header = () => {
                     <ul className={`nav-list ${menuIsOpen ? "open" : ""}`}>
                         <li>
                             <NavLink
-                                to={"/random"}
+                                to={"/random-color"}
                                 className={({ isActive }) => isActive ? 'nav-button active' : 'nav-button'}>
                                 Random Color
                             </NavLink>
                         </li>
                         <li>
                             <NavLink
-                                to={"/palettes"}
+                                to={"/color-palettes"}
                                 className={({ isActive }) => isActive ? 'nav-button active' : 'nav-button'}>
                                 Color Palettes
                             </NavLink>
                         </li>
                         <li>
                             <NavLink
-                                to={"/gradients"}
+                                to={"/gradient-creator"}
                                 className={({ isActive }) => isActive ? 'nav-button active' : 'nav-button'}>
-                                Gradients
+                                Gradient Creator
                             </NavLink>
                         </li>
                         <li>
                             <NavLink
-                                to={"/accessibility"}
+                                to={"/contrast-checker"}
                                 className={({ isActive }) => isActive ? 'nav-button active' : 'nav-button'}>
-                                Accessibility
+                                Contrast Checker
                             </NavLink>
                         </li>
                     </ul>

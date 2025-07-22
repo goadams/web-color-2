@@ -33,7 +33,7 @@ const Accessibility = () => {
     const [colors, setColors] = useLocalStorage("accessTool-colors",['#000000', '#FFFFFF']);
     const [colorInputs, setColorInputs] = useLocalStorage("accessTool-colorInputs",['#000000', '#FFFFFF']);
     const [level, setLevel] = useLocalStorage("accessTool-level",{ value: 'w21aaa', label: 'WCAG 2.1 AAA' });
-    const [tool, setTool] = useLocalStorage("accessTool-tool",{ value: "contrast", label: "Contrast Checker" });
+    const [tool] = React.useState({ value: "contrast", label: "Contrast Checker" });
     const [ratio, setRatio] = useLocalStorage("accessTool-ratio",getContrastRatio(colors[0], colors[1]).toFixed(2));
 
     const levelOptions = [
@@ -41,10 +41,10 @@ const Accessibility = () => {
         { value: 'w21aaa', label: 'WCAG 2.1 AAA' },
     ];
 
-    const toolOptions = [
-        { value: "contrast", label: "Contrast Checker" },
-        { value: "blind", label: "Color Blind Safety" }
-    ];
+    // const toolOptions = [
+    //     { value: "contrast", label: "Contrast Checker" },
+    //     { value: "blind", label: "Color Blind Safety" }
+    // ];
 
     React.useEffect(() => {
         setRatio(getContrastRatio(colors[0], colors[1]).toFixed(2));
@@ -89,9 +89,9 @@ const Accessibility = () => {
         );
     };
 
-    const handleChangeTool = (selected) => {
-        setTool(selected);
-    };
+    // const handleChangeTool = (selected) => {
+    //     setTool(selected);
+    // };
 
     const handleChangeLevel = (selected) => {
         setLevel(selected);
@@ -100,21 +100,21 @@ const Accessibility = () => {
     return (
         <>
             <Layout>
-                <h1>Accessibility</h1>
+                <h1>Contrast Checker</h1>
                 <div className="accessibility-container">
-                    <ElevatedSection
-                        maxWidth={"50rem"}
-                        minWidth={"30rem"}
-                    >
-                        <OptionSelect
-                            name="Tool"
-                            value={tool}
-                            styles={selectCustomStyles}
-                            options={toolOptions}
-                            onChange={handleChangeTool}
-                        >
-                        </OptionSelect>
-                    </ElevatedSection>
+                    {/*<ElevatedSection*/}
+                    {/*    maxWidth={"50rem"}*/}
+                    {/*    minWidth={"30rem"}*/}
+                    {/*>*/}
+                    {/*    <OptionSelect*/}
+                    {/*        name="Tool"*/}
+                    {/*        value={tool}*/}
+                    {/*        styles={selectCustomStyles}*/}
+                    {/*        options={toolOptions}*/}
+                    {/*        onChange={handleChangeTool}*/}
+                    {/*    >*/}
+                    {/*    </OptionSelect>*/}
+                    {/*</ElevatedSection>*/}
 
                     {tool.value === 'contrast' && (
                         <div className="contrast-container">
@@ -124,7 +124,7 @@ const Accessibility = () => {
                                     minWidth={"30rem"}
                                 >
                                     <OptionSelect
-                                        name="Level"
+                                        name="Criteria Level"
                                         value={level}
                                         styles={selectCustomStyles}
                                         options={levelOptions}

@@ -65,7 +65,17 @@
 
 /* Media queries */
 
-@media (max-width: 835px) {
+@media (max-width: 910px) {
+    .app-header {
+        justify-content: right;
+    }
+    .logo-link {
+        display: none;
+    }
+}
+
+
+@media (max-width: 700px) {
     .nav-list {
         display: none;
         flex-direction: column;
