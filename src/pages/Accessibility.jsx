@@ -48,7 +48,7 @@ const Accessibility = () => {
 
     React.useEffect(() => {
         setRatio(getContrastRatio(colors[0], colors[1]).toFixed(2));
-    }, [ colors ]);
+    }, [colors, setRatio]);
 
     React.useEffect(() => {
         const grades = ['', '', '', ''];

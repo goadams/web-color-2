@@ -32,7 +32,7 @@ const Gradients = () => {
             code = `conic-gradient(from ${angle}deg, ${colors[0]} ${positions[0]}%, ${colors[1]} ${positions[1]}%)`;
         }
         setGradientCode(code);
-    }, [gradient, angle, colors, positions]);
+    }, [gradient, angle, colors, positions, setGradientCode]);
 
     const handleChangeHex = (index, e) => {
         const filtered = e.target.value.replace(/[^0-9a-fA-F]/g, '');

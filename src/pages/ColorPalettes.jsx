@@ -65,7 +65,7 @@ const ColorPalettes = () => {
                 setColorPalette(generateAnalogousComplementaryPalette(color));
                 break;
         }
-    }, [color, palette]);
+    }, [color, palette, setColorPalette]);
 
     const handleChangeHex = (e) => {
         const filtered = e.target.value.replace(/[^0-9a-fA-F]/g, '');
