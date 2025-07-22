@@ -7,6 +7,7 @@ import { selectCustomStyles } from "../utils/selectCustomStyles.js";
 import "./Gradients.css";
 import NumberInput from "../components/NumberInput/NumberInput.jsx";
 import useLocalStorage from "../hooks/useLocalStorage.js";
+import SavedSection from "../components/SavedSection/SavedSection.jsx";
 
 const Gradients = () => {
     const [colors, setColors] = useLocalStorage("gradientTool-colors", ["#00A2FF", "#1B6600"]);
@@ -15,6 +16,8 @@ const Gradients = () => {
     const [angle, setAngle] = useLocalStorage("gradientTool-angle", 90);
     const [gradient, setGradient] = useLocalStorage("gradientTool-gradient", { value: "linear", label: "Linear"});
     const [gradientCode, setGradientCode] = useLocalStorage("gradientTool-code", `linear-gradient(${angle}deg, ${colors[0]} ${positions[0]}%, ${colors[1]} ${positions[1]}%)`);
+    const [savedGradients, setSavedGradients] = useLocalStorage("gradientTool-saved", []);
+    const [favorites, setFavorites] = useLocalStorage("gradientTool-favorites", []);
 
     const typeOptions = [
         { value: "linear", label: "Linear" },
@@ -47,6 +50,14 @@ const Gradients = () => {
         }
     };
 
+    const handleDelete = (num, group) => {
+        if (group === 'savedGradients') {
+            setSavedGradients(prevGradients => prevGradients.filter((_, i) => i !== num));
+        } else if (group === 'favorites') {
+            setFavorites(prevFavs => prevFavs.filter((_, i) => i !== num));
+        }
+    };
+
     const handleChangeColorInput = (index, e) => {
         const newColor = e.target.value.toUpperCase();
         setColors(
@@ -59,6 +70,25 @@ const Gradients = () => {
 
     const handleChangeGradient = (selected) => {
         setGradient(selected);
+    };
+
+    const isFavoriteGradient = (g) => {
+        return favorites.some(fav =>
+            fav.code === g.code &&
+            fav.colors === g.colors
+        );
+    }
+
+    const handleFavorite = (i, group) => {
+        if (group === 'savedGradients') {
+            const moveGradient = savedGradients[i];
+            setSavedGradients(savedGradients.filter((_, index) => index !== i));
+            setFavorites([moveGradient, ...favorites]);
+        } else if (group === 'favorites') {
+            const moveGradient = favorites[i];
+            setFavorites(favorites.filter((_, index) => index !== i));
+            setSavedGradients([moveGradient, ...savedGradients]);
+        }
     };
 
     return (
@@ -124,10 +154,43 @@ const Gradients = () => {
                             >
                             </ColorChoice>
                         </div>
+                        <button
+                            className="gradient-save-button"
+                            onClick={() => setSavedGradients(prevSaved => [ { colors: colors, code: gradientCode }, ...prevSaved ])}
+                        >
+                            Save Gradient
+                        </button>
                     </ElevatedSection>
                     <ElevatedSection maxWidth={"70rem"}>
-                        <h2>CSS Code:</h2>
+                        <h2>CSS Code</h2>
                         <p className="gradient-code">{gradientCode}</p>
+                    </ElevatedSection>
+                    <ElevatedSection maxWidth={"160rem"}>
+                        <h2>Saved Gradients</h2>
+                        <div className="gradient-saved-wrapper">
+                            {favorites.map((g, i) => (
+                                <SavedSection
+                                    key={i}
+                                    colors={g.colors}
+                                    handleDelete={() => handleDelete(i, 'favorites')}
+                                    title={g.code}
+                                    gradientCode={g.code}
+                                    handleFavorite={() => handleFavorite(i, 'favorites')}
+                                    isFavorite={isFavoriteGradient(g)}
+                                />
+                            ))}
+                            {savedGradients.map((g, i) => (
+                                <SavedSection
+                                    key={i}
+                                    colors={g.colors}
+                                    handleDelete={() => handleDelete(i, 'savedGradients')}
+                                    title={g.code}
+                                    gradientCode={g.code}
+                                    handleFavorite={() => handleFavorite(i, 'savedGradients')}
+                                    isFavorite={isFavoriteGradient(g)}
+                                />
+                            ))}
+                        </div>
                     </ElevatedSection>
                 </div>
             </Layout>

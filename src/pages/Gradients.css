@@ -5,7 +5,7 @@
     justify-content: center;
 }
 .gradient-colors-wrapper > * {
-    margin: 0 2rem;
+    margin: .5rem 2rem;
 }
 
 .gradient-angle-wrapper {
@@ -18,3 +18,14 @@
     font-family: monospace;
     line-height: 2;
 }
+
+.gradient-save-button {
+    margin-top: 2rem;
+}
+
+.gradient-saved-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
