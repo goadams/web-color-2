@@ -89,18 +89,7 @@
 
 
 /* Media queries */
-
 @media (max-width: 1000px) {
-    .app-header {
-        justify-content: right;
-    }
-    .logo-link {
-        display: none;
-    }
-}
-
-
-@media (max-width: 810px) {
     .nav-list {
         display: none;
         flex-direction: column;
@@ -152,10 +141,7 @@
     }
 }
 
-@media (max-width: 360px) {
-    .app-header {
-        justify-content: right;
-    }
+@media (max-width: 432px) {
     .logo-link {
         display: none;
     }
