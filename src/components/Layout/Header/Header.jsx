@@ -1,9 +1,11 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
+import { useTheme } from "../../../context/ThemeContext.jsx";
 import "./Header.css"
 
 const Header = () => {
     const [menuIsOpen, setMenuIsOpen] = React.useState(false);
+    const { theme, setTheme } = useTheme();
 
     return (
         <>
@@ -17,6 +19,21 @@ const Header = () => {
                     </svg>
                     Web Color Tools
                 </Link>
+                {/* Theme selector */}
+                <div className="theme-select-container">
+                    <label htmlFor="theme-select">Theme: </label>
+                    <select
+                        className="theme-select"
+                        id="theme-select"
+                        name="theme-select"
+                        value={theme}
+                        onChange={(e) => setTheme(e.target.value)}
+                    >
+                        <option value="">Dark</option>
+                        <option value="theme-light">Light</option>
+                        <option value="theme-blue">Blue</option>
+                    </select>
+                </div>
                 <nav className="app-nav">
                     <button
                         className={`hamburger ${menuIsOpen ? "open" : ""}`}

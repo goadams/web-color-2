@@ -25,6 +25,25 @@
     color: var(--color-text);
 }
 
+.theme-select-container {
+    justify-self: right;
+    margin: 1rem;
+    text-align: center;
+}
+
+.theme-select {
+    background-color: var(--color-elevated);
+    color: var(--color-text);
+    border: 1px solid var(--color-primary);
+    border-radius: .5rem;
+    padding: .4rem;
+    margin-right: 1rem;
+}
+.theme-select:focus-visible {
+    outline: 1px solid var(--color-accent);
+    border-color: var(--color-primary-hover);
+}
+
 .nav-button {
     display: block;
     background-color: var(--color-primary);
@@ -65,7 +84,7 @@
 
 /* Media queries */
 
-@media (max-width: 910px) {
+@media (max-width: 1060px) {
     .app-header {
         justify-content: right;
     }
@@ -75,7 +94,7 @@
 }
 
 
-@media (max-width: 700px) {
+@media (max-width: 810px) {
     .nav-list {
         display: none;
         flex-direction: column;
