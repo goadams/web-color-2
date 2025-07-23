@@ -157,6 +157,17 @@ const Gradients = () => {
                                     }}
                                 >
                                 </ColorChoice>
+                                <button
+                                    className="gradient-reset-button"
+                                    onClick={() => {
+                                        setColors(["#00A2FF", "#1B6600"]);
+                                        setColorInputs(["#00A2FF", "#1B6600"]);
+                                        setPositions([0, 100]);
+                                        setAngle(90);
+                                    }}
+                                >
+                                    Reset Gradient
+                                </button>
                             </div>
                         </ElevatedSection>
                     </div>

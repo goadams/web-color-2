@@ -206,6 +206,12 @@ const Accessibility = () => {
                                             >Random Background</button>
                                         </ColorChoice>
                                     </div>
+                                    <button
+                                        onClick={() => {
+                                            setColors(['#000000', '#FFFFFF']);
+                                            setColorInputs(['#000000', '#FFFFFF']);
+                                        }}
+                                    >Reset Colors</button>
                                     <div>
                                         <h2>Contrast Ratio</h2>
                                         <p className="contrast-ratio">{ratio}:1</p>

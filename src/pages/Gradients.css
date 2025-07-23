@@ -19,7 +19,8 @@
     line-height: 2;
 }
 
-.gradient-save-button {
+.gradient-save-button,
+.gradient-reset-button {
     margin-top: 1rem;
 }
 

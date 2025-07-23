@@ -71,7 +71,8 @@
     line-height: 1.6;
 }
 
-.contrast-colors-wrapper button {
+.contrast-colors-wrapper button,
+.accessibility-container button {
     margin-bottom: 1rem;
 }
 
