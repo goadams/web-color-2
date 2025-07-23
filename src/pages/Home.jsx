@@ -24,7 +24,7 @@ const Home = () => {
                             <h2>Random Color</h2>
                             <p>Get random colors. Save the ones you like. Sort them into your favorites.</p>
                             <Link
-                                to={"/random-color"}
+                                to={"/web-color-2/random-color"}
                                 className="link-button">
                                 Random Color
                             </Link>
@@ -37,7 +37,7 @@ const Home = () => {
                             <h2>Color Palettes</h2>
                             <p>Create palettes based on a base color. Save and favorite them.</p>
                             <Link
-                                to={"/color-palettes"}
+                                to={"/web-color-2/color-palettes"}
                                 className="link-button">
                                 Color Palettes
                             </Link>
@@ -48,7 +48,7 @@ const Home = () => {
                             <h2>Gradient Creator</h2>
                             <p>Create linear, radial, and conic gradients. Copy the CSS Code to use in your project!</p>
                             <Link
-                                to={"/gradient-creator"}
+                                to={"/web-color-2/gradient-creator"}
                                 className="link-button">
                                 Gradient Creator
                             </Link>
@@ -61,7 +61,7 @@ const Home = () => {
                             <h2>Contrast Checker</h2>
                             <p>Verify compliance with WCAG 2.1 AA and AAA standards.</p>
                             <Link
-                                to={"/contrast-checker"}
+                                to={"/web-color-2/contrast-checker"}
                                 className="link-button">
                                 Contrast Checker
                             </Link>
