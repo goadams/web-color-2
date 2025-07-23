@@ -22,42 +22,42 @@ import useLocalStorage from "../hooks/useLocalStorage.js";
 const ColorPalettes = () => {
     const [color, setColor] = useLocalStorage("paletteTool-color", "#A2B7C3");
     const [colorInput, setColorInput] = useLocalStorage("paletteTool-colorInput", "#A2B7C3");
-    const [palette, setPalette] = useLocalStorage("paletteTool-palette", { value: "monochromatic", label: "Monochromatic" });
+    const [palette, setPalette] = useLocalStorage("paletteTool-palette", "Monochromatic");
     const [colorPalette, setColorPalette] = useLocalStorage("paletteTool-colorPalette", generateMonoPalette(color));
     const [savedPalettes, setSavedPalettes] = useLocalStorage("paletteTool-savedPalettes", []);
     const [favorites, setFavorites] = useLocalStorage("paletteTool-favorites", []);
 
     const typeOptions = [
-        { value: "monochromatic", label: "Monochromatic" },
-        { value: "analogous", label: "Analogous" },
-        { value: "complementary", label: "Complementary" },
-        { value: "split", label: "Split-Complementary" },
-        { value: "triadic", label: "Triadic" },
-        { value: "tetradic", label: "Tetradic" },
-        { value: "square", label: "Square" }
+        { value: "Monochromatic", label: "Monochromatic" },
+        { value: "Analogous", label: "Analogous" },
+        { value: "Complementary", label: "Complementary" },
+        { value: "Split", label: "Split-Complementary" },
+        { value: "Triadic", label: "Triadic" },
+        { value: "Tetradic", label: "Tetradic" },
+        { value: "Square", label: "Square" }
     ];
 
     React.useEffect(() => {
-        switch (palette.value) {
-            case "monochromatic":
+        switch (palette) {
+            case "Monochromatic":
                 setColorPalette(generateMonoPalette(color));
                 break;
-            case "analogous":
+            case "Analogous":
                 setColorPalette(generateAnalogousPalette(color));
                 break;
-            case "complementary":
+            case "Complementary":
                 setColorPalette(generateComplementaryPalette(color));
                 break;
-            case "split":
+            case "Split":
                 setColorPalette(generateSplitPalette(color));
                 break;
-            case "triadic":
+            case "Triadic":
                 setColorPalette(generateTriadicPalette(color));
                 break;
-            case "tetradic":
+            case "Tetradic":
                 setColorPalette(generateTetradicPalette(color));
                 break;
-            case "square":
+            case "Square":
                 setColorPalette(generateSquarePalette(color));
                 break;
         }
@@ -78,8 +78,8 @@ const ColorPalettes = () => {
         setColorInput(hex);
     };
 
-    const handleChangePalette = (selected) => {
-        setPalette(selected);
+    const handleChangePalette = (event) => {
+        setPalette(event.target.value);
     };
 
     const handleDelete = (num, group) => {
@@ -94,7 +94,7 @@ const ColorPalettes = () => {
         setSavedPalettes([
             {
                 colors: colorPalette,
-                type: palette.label,
+                type: palette,
                 baseColor: color
             },
             ...savedPalettes
@@ -152,7 +152,7 @@ const ColorPalettes = () => {
                         gridArea='show'
                         width="auto"
                     >
-                        <p className="palette-display-title">{color} {palette.label} Palette</p>
+                        <p className="palette-display-title">{color} {palette} Palette</p>
                         <div className="palette-color-container">
                             {colorPalette.map((c, i) => (
                                 <div className="palette-color-wrapper" key={i}>

@@ -14,7 +14,7 @@ const Gradients = () => {
     const [colorInputs, setColorInputs] = useLocalStorage("gradientTool-colorInputs", ["#00A2FF", "#1B6600"]);
     const [positions, setPositions] = useLocalStorage("gradientTool-positions", [0, 100]);
     const [angle, setAngle] = useLocalStorage("gradientTool-angle", 90);
-    const [gradient, setGradient] = useLocalStorage("gradientTool-gradient", { value: "linear", label: "Linear"});
+    const [gradient, setGradient] = useLocalStorage("gradientTool-gradient", "linear");
     const [gradientCode, setGradientCode] = useLocalStorage("gradientTool-code", `linear-gradient(${angle}deg, ${colors[0]} ${positions[0]}%, ${colors[1]} ${positions[1]}%)`);
     const [savedGradients, setSavedGradients] = useLocalStorage("gradientTool-saved", []);
     const [favorites, setFavorites] = useLocalStorage("gradientTool-favorites", []);
@@ -27,11 +27,11 @@ const Gradients = () => {
 
     React.useEffect(() => {
         let code = '';
-        if (gradient.value === "linear") {
+        if (gradient === "linear") {
             code = `linear-gradient(${angle}deg, ${colors[0]} ${positions[0]}%, ${colors[1]} ${positions[1]}%)`;
-        } else if (gradient.value === "radial") {
+        } else if (gradient === "radial") {
             code = `radial-gradient(circle, ${colors[0]} ${positions[0]}%, ${colors[1]} ${positions[1]}%)`;
-        } else if (gradient.value === "conic") {
+        } else if (gradient === "conic") {
             code = `conic-gradient(from ${angle}deg, ${colors[0]} ${positions[0]}%, ${colors[1]} ${positions[1]}%)`;
         }
         setGradientCode(code);
@@ -68,8 +68,8 @@ const Gradients = () => {
         );
     };
 
-    const handleChangeGradient = (selected) => {
-        setGradient(selected);
+    const handleChangeGradient = (event) => {
+        setGradient(event.target.value);
     };
 
     const isFavoriteGradient = (g) => {
@@ -112,7 +112,7 @@ const Gradients = () => {
                                 options={typeOptions}
                                 onChange={handleChangeGradient}
                             >
-                                {gradient.value !== "radial" && (
+                                {gradient !== "radial" && (
                                     <div className="gradient-angle-wrapper">
                                         <label htmlFor="gradient-angle-input">Angle</label>
                                         <NumberInput

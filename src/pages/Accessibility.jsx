@@ -32,13 +32,13 @@ const Accessibility = () => {
     const [grades, setGrades] = React.useState(['PASS', 'PASS', 'PASS', 'PASS']);
     const [colors, setColors] = useLocalStorage("accessTool-colors",['#000000', '#FFFFFF']);
     const [colorInputs, setColorInputs] = React.useState(colors);
-    const [level, setLevel] = useLocalStorage("accessTool-level",{ value: 'w21aaa', label: 'WCAG 2.1 AAA' });
+    const [level, setLevel] = useLocalStorage("accessTool-level",'WCAG 2.1 AAA');
     const [tool] = React.useState({ value: "contrast", label: "Contrast Checker" });
     const [ratio, setRatio] = React.useState(getContrastRatio(colors[0], colors[1]).toFixed(2));
 
     const levelOptions = [
-        { value: 'w21aa', label: 'WCAG 2.1 AA' },
-        { value: 'w21aaa', label: 'WCAG 2.1 AAA' },
+        { value: 'WCAG 2.1 AA', label: 'WCAG 2.1 AA' },
+        { value: 'WCAG 2.1 AAA', label: 'WCAG 2.1 AAA' },
     ];
 
     // const toolOptions = [
@@ -52,12 +52,12 @@ const Accessibility = () => {
 
     React.useEffect(() => {
         const grades = ['', '', '', ''];
-        if (level.value === 'w21aa') {
+        if (level === 'WCAG 2.1 AA') {
             grades[3] = ratio >= 3 ? "PASS" : "FAIL";
             grades[2] = ratio >= 3 ? "PASS" : "FAIL";
             grades[1] = ratio >= 4.5 ? "PASS" : "FAIL";
             grades[0] = ratio >= 4.5 ? "PASS" : (ratio >= 3 ? "SOME" : "FAIL");
-        } else if (level.value === 'w21aaa') {
+        } else if (level === 'WCAG 2.1 AAA') {
             grades[3] = ratio >= 3 ? "PASS" : "FAIL";
             grades[2] = ratio >= 4.5 ? "PASS" : "FAIL";
             grades[1] = ratio >= 7 ? "PASS" : "FAIL";
@@ -93,8 +93,8 @@ const Accessibility = () => {
     //     setTool(selected);
     // };
 
-    const handleChangeLevel = (selected) => {
-        setLevel(selected);
+    const handleChangeLevel = (event) => {
+        setLevel(event.target.value);
     };
 
     return (

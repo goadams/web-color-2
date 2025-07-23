@@ -1,30 +1,26 @@
 import React from "react";
-import Select, { components as Components } from 'react-select';
 import "./OptionSelect.css"
 
-const MaxLengthInput = (props) => {
-    const { maxLength } = props.selectProps;
-    return <Components.Input {...props} maxLength={maxLength} />;
-};
-
-const OptionSelect = ({ children, name, value, styles, options, onChange, maxLength = 25, flexDirection }) => {
+const OptionSelect = ({ children, name, value, options, onChange, flexDirection }) => {
     const modName = name.replace(/\s+/g, '-').toLowerCase();
 
     return (
         <div className="os-container" style={{ display: 'flex', flexDirection: flexDirection }}>
             <div className="os-select-wrapper">
                 <label htmlFor={`${modName}-select`}>{name} Select:</label>
-                <Select
+                <select
                     className={`${modName}-select os-select`}
-                    components={{Input: MaxLengthInput}}
-                    maxLength={maxLength}
-                    inputId={`${modName}-select`}
+                    id={`${modName}-select`}
                     name={`${modName}-select`}
                     value={value}
-                    styles={styles}
-                    options={options}
                     onChange={onChange}
-                />
+                >
+                    {options.map(op => (
+                        <option key={op.value} value={op.value}>
+                            {op.label}
+                        </option>
+                    ))}
+                </select>
             </div>
             {children}
         </div>
