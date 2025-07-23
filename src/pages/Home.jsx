@@ -1,12 +1,9 @@
 import React from "react";
 import Layout from "../components/Layout/Layout.jsx";
 import "./Home.css"
-import {Link, NavLink} from "react-router-dom";
-import {useTheme} from "../context/ThemeContext.jsx";
+import {NavLink} from "react-router-dom";
 
 const Home = () => {
-    const { theme, setTheme } = useTheme();
-
     return (
         <>
             <Layout>
