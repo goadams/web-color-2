@@ -21,7 +21,7 @@ const Header = () => {
                 </Link>
                 {/* Theme selector */}
                 <div className="theme-select-container">
-                    <label htmlFor="theme-select">Theme: </label>
+                    <label htmlFor="theme-select">THEME</label>
                     <select
                         className="theme-select"
                         id="theme-select"

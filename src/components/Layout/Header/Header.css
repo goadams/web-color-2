@@ -23,12 +23,19 @@
     text-decoration: none;
     font-size: 2.4rem;
     color: var(--color-text);
+    font-family: "Cambria", sans-serif;
 }
 
 .theme-select-container {
-    justify-self: right;
-    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    margin: 1.5rem;
     text-align: center;
+    width: auto;
+}
+.theme-select-container label{
+    font-size: 1.4rem;
+    line-height: 1.2;
 }
 
 .theme-select {
@@ -36,8 +43,7 @@
     color: var(--color-text);
     border: 1px solid var(--color-primary);
     border-radius: .5rem;
-    padding: .4rem;
-    margin-right: 1rem;
+    padding: .2rem;
 }
 .theme-select:focus-visible {
     outline: 1px solid var(--color-accent);
@@ -84,7 +90,7 @@
 
 /* Media queries */
 
-@media (max-width: 1060px) {
+@media (max-width: 1000px) {
     .app-header {
         justify-content: right;
     }
@@ -99,7 +105,7 @@
         display: none;
         flex-direction: column;
         position: absolute;
-        top: 6.5rem;
+        top: 6rem;
         left: 0;
         width: 100%;
         background: var(--color-background);
