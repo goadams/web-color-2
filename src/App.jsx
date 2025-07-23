@@ -12,11 +12,11 @@ const App = () => {
         <ThemeProvider>
             <Router>
                 <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/random-color" element={<RandomColor />} />
-                    <Route path="/color-palettes" element={<ColorPalettes />} />
-                    <Route path="/gradient-creator" element={<Gradients />} />
-                    <Route path="/contrast-checker" element={<Accessibility />} />
+                    <Route path="/web-color-2/" element={<Home />} />
+                    <Route path="/web-color-2/random-color" element={<RandomColor />} />
+                    <Route path="/web-color-2/color-palettes" element={<ColorPalettes />} />
+                    <Route path="/web-color-2/gradient-creator" element={<Gradients />} />
+                    <Route path="/web-color-2/contrast-checker" element={<Accessibility />} />
                 </Routes>
             </Router>
         </ThemeProvider>

@@ -10,7 +10,7 @@ const Header = () => {
     return (
         <>
             <header className="app-header">
-                <Link to="/" className="logo-link" aria-label="Web Color Tools Home">
+                <Link to="/web-color-2/" className="logo-link" aria-label="Web Color Tools Home">
                     <svg width="64" height="64" viewBox="0 0 64 64" aria-labelledby="wct-logo-title" role="img" xmlns="http://www.w3.org/2000/svg">
                         <title id="wct-logo-title">Web Color Tools Minimalist Logo</title>
                         <circle cx="24" cy="32" r="15" fill="#FF8DA1"/>
@@ -47,28 +47,28 @@ const Header = () => {
                     <ul className={`nav-list ${menuIsOpen ? "open" : ""}`}>
                         <li>
                             <NavLink
-                                to={"/random-color"}
+                                to={"/web-color-2/random-color"}
                                 className={({ isActive }) => isActive ? 'nav-button active' : 'nav-button'}>
                                 Random Color
                             </NavLink>
                         </li>
                         <li>
                             <NavLink
-                                to={"/color-palettes"}
+                                to={"/web-color-2/color-palettes"}
                                 className={({ isActive }) => isActive ? 'nav-button active' : 'nav-button'}>
                                 Color Palettes
                             </NavLink>
                         </li>
                         <li>
                             <NavLink
-                                to={"/gradient-creator"}
+                                to={"/web-color-2/gradient-creator"}
                                 className={({ isActive }) => isActive ? 'nav-button active' : 'nav-button'}>
                                 Gradient Creator
                             </NavLink>
                         </li>
                         <li>
                             <NavLink
-                                to={"/contrast-checker"}
+                                to={"/web-color-2/contrast-checker"}
                                 className={({ isActive }) => isActive ? 'nav-button active' : 'nav-button'}>
                                 Contrast Checker
                             </NavLink>
