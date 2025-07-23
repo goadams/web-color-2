@@ -121,7 +121,7 @@ const Gradients = () => {
                                             max={360}
                                             step={2}
                                             value={angle}
-                                            onChange={val => setAngle(val ?? 0)}
+                                            onChange={(e) => setAngle(e.target.value ?? 0)}
                                         >
                                         </NumberInput>
                                     </div>)}
@@ -139,8 +139,8 @@ const Gradients = () => {
                                     handleChangeHex={(e) => handleChangeHex(0, e)}
                                     handleChangeColorInput={(e) => handleChangeColorInput(0, e)}
                                     position={positions[0]}
-                                    handleChangePosition={val => {
-                                        const newVal = val ?? 0;
+                                    handleChangePosition={(e) => {
+                                        const newVal = e.target.value ?? 0;
                                         setPositions(positions.map((p, i) => i === 0 ? newVal : p));
                                     }}
                                 >
@@ -151,8 +151,8 @@ const Gradients = () => {
                                     handleChangeHex={(e) => handleChangeHex(1, e)}
                                     handleChangeColorInput={(e) => handleChangeColorInput(1, e)}
                                     position={positions[1]}
-                                    handleChangePosition={val => {
-                                        const newVal = val ?? 0;
+                                    handleChangePosition={(e) => {
+                                        const newVal = e.target.value ?? 0;
                                         setPositions(positions.map((p, i) => i === 1 ? newVal : p));
                                     }}
                                 >

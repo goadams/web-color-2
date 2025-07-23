@@ -1,66 +1,48 @@
-import NumericInput from 'react-numeric-input';
 import React from "react";
-import getCssVar from "../../utils/getCssVar.js";
+import "./NumberInput.css"
 
 const NumberInput = ({ min, max, step, value, onChange, id, name }) => {
 
-    const numberInputStyles = {
-        wrap: {
-            background: "transparent",
-            border: "none",
-            outline: "none",
-        },
-        input: {
-            color: `${getCssVar("--color-text")}`,
-            backgroundColor: "transparent",
-            border: `1px solid ${getCssVar("--color-primary")}`,
-            width: '100%',
-            outline: 'none',
-            boxShadow: 'none',
-            textAlign: 'center',
-            height: '4rem'
-        },
-        'input:focus': {
-            border: `1px solid ${getCssVar("--color-accent")}`,
-            outline: 'none',
-            boxShadow: 'none',
-            backgroundColor: "transparent",
-        },
-        btn: {
-            background: `${getCssVar("--color-primary")}`,
-            boxShadow: 'none',
-            width: '4rem',
-            border: `1px solid ${getCssVar("--color-background")}`
-        },
-        'btn:hover': {
-            background: `${getCssVar("--color-primary-hover")}`
-        },
-        'btn:active': {
-            background: `${getCssVar("--color-background")}`,
-            boxShadow: 'none',
-        },
-        arrowUp: {
-            borderBottomColor: `${getCssVar("--color-text")}`
-        },
-        arrowDown: {
-            borderTopColor: `${getCssVar("--color-text")}`
+    // Intercept input and sanitize value
+    const handleChange = (e) => {
+        let val = e.target.value;
+
+        val = val.replace(/[^0-9]/g, "");
+
+        if (val > max) {
+            val = max;
+        }
+
+        if (val.length > 1) {
+            if (val[0] === '0') {
+                val = val.substring(1);
+            }
+        }
+
+        // If empty or valid number, call parent's onChange
+        if (val === "" || !isNaN(val)) {
+            onChange({
+                target: {
+                    name,
+                    value: val
+                }
+            });
         }
     };
 
     return (
-        <NumericInput
+        <input
             className="number-input"
             id={id}
             name={name}
-            type="number"
+            type="text"
+            inputMode="decimal"
             min={min}
             max={max}
             step={step}
             value={value}
-            onChange={onChange}
-            style={numberInputStyles}
-        >
-        </NumericInput>
+            onChange={handleChange}
+        />
     )
 };
 
