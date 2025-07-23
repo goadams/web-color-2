@@ -13,8 +13,8 @@
 
 .contrast-ratio {
     font-size: 3rem;
+    line-height: 1.5;
 }
-
 
 .contrast-previews-wrapper {
     display: flex;
@@ -35,7 +35,7 @@
 }
 
 .contrast-previews-standard {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
 }
 
 .contrast-previews-large {
@@ -58,9 +58,12 @@
 .contrast-previews-pass-wrapper > * {
     margin: 0 .5rem;
 }
+.contrast-previews-pass-wrapper:first-child {
+    font-size: 2.2rem;
+}
 
 .contrast-grade {
-    padding: 0 .5rem;
+    padding: 0 1rem;
     border-radius: 1rem;
 }
 
@@ -69,11 +72,12 @@
     justify-self: center;
     margin-top: 1rem;
     line-height: 1.6;
+    font-size: 2.2rem;
 }
 
 .contrast-colors-wrapper button,
 .accessibility-container button {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
 }
 
 

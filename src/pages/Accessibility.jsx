@@ -155,7 +155,7 @@ const Accessibility = () => {
                                                     min={0}
                                                     max={100}
                                                 >
-                                                    <Label>Foreground Lightness</Label>
+                                                    <Label>Foreground Lightness:</Label>
                                                     <SliderOutput />
                                                     <SliderTrack>
                                                         <SliderThumb />
@@ -190,7 +190,7 @@ const Accessibility = () => {
                                                     min={0}
                                                     max={100}
                                                 >
-                                                    <Label>Background Lightness</Label>
+                                                    <Label>Background Lightness:</Label>
                                                     <SliderOutput />
                                                     <SliderTrack>
                                                         <SliderThumb />

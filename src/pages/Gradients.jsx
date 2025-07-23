@@ -94,7 +94,7 @@ const Gradients = () => {
     return (
         <>
             <Layout>
-                <h1>Gradients</h1>
+                <h1>Gradient Creator</h1>
 
                 <div style={{ background: gradientCode, width: "100%", height: "30rem" }}>
 
@@ -131,7 +131,7 @@ const Gradients = () => {
 
                     <div className="gradients-color-container">
                         <ElevatedSection maxWidth={"70rem"}>
-                            <h2>Color Selection:</h2>
+                            <h2>Color Selection</h2>
                             <div className="gradient-colors-wrapper">
                                 <ColorChoice
                                     name="Color 1"
