@@ -1,50 +1,93 @@
-.logo-link-home {
-    justify-self: center;
-    color: var(--color-text);
-}
-
 .intro-text {
     text-align: center;
     justify-self: center;
 }
 
-/* Navigation*/
+.app-splash-container {
+    background: var(--color-elevated);
+    background: url("https://images.pexels.com/photos/40799/paper-colorful-color-loose-40799.jpeg");
+    height: calc(100vh - 6rem);
+    margin: 0 -1rem;
+    padding: 2rem 2rem;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    justify-items: center;
+}
 
-.nav-list-home {
-    display: flex;
-    flex-direction: column;
+.app-splash-words {
+    background: var(--color-elevated);
+    width: auto;
+    display: inline-block;
+    padding: 1rem 3rem;
+    margin: 1rem;
+    line-height: 1.6;
+}
+
+.app-pages-container {
+    text-align: center;
+    margin: 0;
+    line-height: 1.6;
     width: 100%;
-    max-width: 500px;
-    justify-self: center;
-}
-.nav-list-home > li {
-    margin: 0 .1rem;
-    padding: 1rem .4rem;
-}
-.nav-list-home li:last-child {
-    margin-right: 0;
 }
 
-.nav-button-home {
+.app-pages-container h2 {
+    margin-bottom: 2rem;
+}
+
+.app-pages-container > div:nth-child(even) {
+    background: var(--color-elevated);
+    width: 100%;
+}
+.app-pages-container > div {
+    padding: 5rem 2rem;
+    justify-items: center;
+}
+
+.app-page-info {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.app-page-info img {
+    display: none;
+}
+.app-page-info > div {
+    border-bottom: 1px solid var(--color-accent);
+}
+
+@media (min-width: 1350px) {
+    .app-page-info {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+    }
+    .app-page-info img {
+        display: block;
+        max-width: 90%;
+    }
+}
+
+
+/* Pages Intro */
+.link-button {
     display: block;
     background-color: var(--color-primary);
     color: var(--color-text);
-    padding: 2rem 2rem;
+    padding: 1rem 2rem;
     border-radius: .4rem;
     text-decoration: none;
     transition: background 0.2s ease;
     text-align: center;
+    margin: 2rem 0;
 }
 
-.active {
-    border-bottom: 2px solid var(--color-accent);
-}
-
-.nav-button:hover {
+.link-button:hover {
     background-color: var(--color-primary-hover);
 }
 
-.nav-button:focus-visible {
+.link-button:focus-visible {
     background-color: var(--color-primary-hover);
     outline: 1px solid var(--color-accent);
     outline-offset: 2px;

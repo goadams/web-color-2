@@ -1,49 +1,73 @@
 import React from "react";
 import Layout from "../components/Layout/Layout.jsx";
 import "./Home.css"
-import {NavLink} from "react-router-dom";
+import {Link} from "react-router-dom";
+import randomColorScreenshot from '../assets/random-color-screenshot.png';
+import colorPalettesScreenshot from '../assets/color-palettes-screenshot.png';
+import gradientScreenshot from '../assets/gradient-screenshot.png';
+import contrastChecker from '../assets/contrast-screenshot.png';
 
 const Home = () => {
     return (
         <>
             <Layout>
-                <h1>Home Page</h1>
-                <div className="intro-text">
-                    <p>Welcome to Web Color Tools, your one-stop website for color reference.</p>
-                    <p>Choose a tool below:</p>
+                <div className="app-splash-container">
+                    <h1 className="app-splash-words">Welcome to Web Color Tools</h1>
+                    <div className="intro-text">
+                        <p className="app-splash-words">Your home for simple color tools. Choose a tool below and get to work!</p>
+                    </div>
                 </div>
-                <nav className="app-nav-home">
-                    <ul className="nav-list-home">
-                        <li>
-                            <NavLink
+
+                <div className="app-pages-container">
+                    <div className="app-page-info">
+                        <div>
+                            <h2>Random Color</h2>
+                            <p>Get random colors. Save the ones you like. Sort them into your favorites.</p>
+                            <Link
                                 to={"/random-color"}
-                                className="nav-button-home">
+                                className="link-button">
                                 Random Color
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink
+                            </Link>
+                        </div>
+                        <img src={randomColorScreenshot} alt="A screenshot of a sample Random Color saved section." />
+                    </div>
+                    <div className="app-page-info">
+                        <img src={colorPalettesScreenshot} alt="A screenshot of a sample Color Palettes saved section."/>
+                        <div>
+                            <h2>Color Palettes</h2>
+                            <p>Create palettes based on a base color. Save and favorite them.</p>
+                            <Link
                                 to={"/color-palettes"}
-                                className="nav-button-home">
+                                className="link-button">
                                 Color Palettes
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink
+                            </Link>
+                        </div>
+                    </div>
+                    <div className="app-page-info">
+                        <div>
+                            <h2>Gradient Creator</h2>
+                            <p>Create linear, radial, and conic gradients. Copy the CSS Code to use in your project!</p>
+                            <Link
                                 to={"/gradient-creator"}
-                                className="nav-button-home">
+                                className="link-button">
                                 Gradient Creator
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink
+                            </Link>
+                        </div>
+                        <img src={gradientScreenshot} alt="A screenshot of a sample Gradient Creator saved section."/>
+                    </div>
+                    <div className="app-page-info">
+                        <img src={contrastChecker} alt="A screenshot of a sample previews section on the Contrast Checker page."/>
+                        <div>
+                            <h2>Contrast Checker</h2>
+                            <p>Verify compliance with WCAG 2.1 AA and AAA standards.</p>
+                            <Link
                                 to={"/contrast-checker"}
-                                className="nav-button-home">
+                                className="link-button">
                                 Contrast Checker
-                            </NavLink>
-                        </li>
-                    </ul>
-                </nav>
+                            </Link>
+                        </div>
+                    </div>
+                </div>
             </Layout>
         </>
     );

@@ -95,12 +95,17 @@ html {
     background: var(--color-background);
 }
 main {
-    padding: 0 1rem;
+    padding: 0;
+    width: 100%;
+    max-width: 2200px;
+    margin: 0 auto;
+    overflow-x: hidden
 }
 h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: 1rem;
+    font-family: "Cambria", sans-serif;
 }
 h1 {
     font-size: 3rem;
