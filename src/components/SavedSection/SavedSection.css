@@ -75,6 +75,9 @@
 }
 .star-button:focus {
     background: none;
+}
+.star-button:focus-visible {
+    background: none;
     outline: 2px solid var(--color-accent);
     outline-offset: -.5rem;
     border-radius: 1rem;
